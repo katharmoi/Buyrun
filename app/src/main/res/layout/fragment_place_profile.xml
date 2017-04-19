@@ -37,6 +37,7 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/no_img_placeholder"
                     app:layout_collapseMode="parallax"
+                    android:contentDescription="@string/a11y_place_image"
                     android:transitionName="@string/shared_thumb_img"/>
 
                 <android.support.v7.widget.Toolbar

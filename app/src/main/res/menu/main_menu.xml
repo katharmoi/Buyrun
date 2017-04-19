@@ -6,7 +6,7 @@
         android:title="@string/sign_out"
         app:showAsAction="never"/>
     <item android:id="@+id/check_out_menu"
-        android:title="Check Out"
+        android:title="@string/check_out"
         app:showAsAction="never"/>
 
 </menu>

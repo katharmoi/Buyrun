@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.google.android.gms.vision.text.Text;
+
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.model.Review;
 import com.kadirkertis.orfo.utilities.Constants;

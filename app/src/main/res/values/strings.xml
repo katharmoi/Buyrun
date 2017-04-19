@@ -113,5 +113,10 @@
     <string name="order_details_header">Order Details</string>
     <string name="order_details_place">Place :</string>
     <string name="order_details_date">Date :</string>
+    <string name="a11y_cart">cart</string>
+    <string name="a11y_add_to_cart">add to cart</string>
+    <string name="check_out">Check Out</string>
+    <string name="cart_product_count">product count</string>
+    <string name="placeholder_text">12/17</string>
     k
 </resources>

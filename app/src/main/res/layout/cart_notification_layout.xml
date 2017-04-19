@@ -14,7 +14,7 @@
         android:id="@+id/cart_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Notification Icon"
+        android:contentDescription="@string/cart_product_count"
         android:gravity="center"
         android:src="@drawable/ic_action_cart"
         android:layout_centerVertical="true" />
@@ -26,7 +26,6 @@
         android:background="@drawable/badge"
         android:gravity="center"
         android:minWidth="17sp"
-        android:text="12"
         android:textColor="#fff"
         android:textSize="12sp"
         android:layout_alignBottom="@+id/cart_icon"
