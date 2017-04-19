@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/orfolognobg"/>
+
+    <item android:top="120dp">
+        <bitmap
+            android:src="@drawable/orfolognobg"
+            android:gravity="top|center_horizontal" />
+    </item>
+
+</layer-list>

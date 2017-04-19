@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAccent"
+    android:layout_margin="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorOrderBg">
+
+        <TextView
+            android:id="@+id/closed_order_item_place_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_details_place"
+            android:textSize="18sp"
+            tools:text="Place: "
+            android:layout_marginBottom="4dp"
+            android:paddingStart="4dp"
+            android:paddingLeft="4dp"/>
+        <TextView
+            android:id="@+id/closed_order_item_order_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_details_date"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp"
+            android:paddingStart="4dp"
+            android:paddingLeft="4dp"
+            tools:text="Date"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_details_header"
+            android:textSize="18sp"
+            android:layout_marginBottom="4dp"
+            android:paddingStart="4dp"
+            android:paddingLeft="4dp"
+            tools:text="Details"/>
+
+        <ListView
+            android:id="@+id/closed_order_item_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"/>
+        <TextView
+            android:id="@+id/closed_order_item_total_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:paddingEnd="2dp"
+            android:paddingRight="2dp"
+            android:paddingStart="2dp"
+            android:paddingLeft="2dp"
+            android:layout_marginTop="10dp"
+            tools:text="Total = 213.21"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

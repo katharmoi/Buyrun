@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+
+
+        <!-- shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/curved_set</item>
+        <item name="android:windowSharedElementReturnTransition">@transition/curved_set</item>
+    </style>
+</resources>

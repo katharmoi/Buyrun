@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/place_card_view"
+    android:layout_width="180dp"
+    android:layout_height="240dp"
+    card_view:cardCornerRadius="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/list_item_place_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/place_image_height"
+            android:scaleType="fitXY"
+            android:src="@drawable/no_img_placeholder" />
+
+        <TextView
+            android:id="@+id/list_item_place_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:paddingLeft="2dp"
+            android:paddingStart="2dp"
+            android:paddingRight="2dp"
+            android:paddingEnd="2dp"
+            tools:text="SitarBoss"/>
+
+        <TextView
+            android:id="@+id/list_item_place_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:paddingLeft="2dp"
+            android:paddingStart="2dp"
+            android:paddingRight="2dp"
+            android:paddingEnd="2dp"
+            tools:text="SitarBoss"/>
+
+       <RatingBar
+           android:id="@+id/list_item_place_rating_bar"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:rating="3"
+           android:numStars="5"
+           style="?android:attr/ratingBarStyleSmall"
+           android:layout_gravity="center_horizontal"
+           />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <ImageView
+            android:id="@+id/cart_product_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/no_img_placeholder" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cart_prdoduct_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingBottom="6dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Spagetti bolonez" />
+
+            <TextView
+                android:id="@+id/cart_prdoduct_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingStart="4dp"
+                android:textSize="16sp"
+                tools:text="Price: 12.00" />
+
+            <TextView
+                android:id="@+id/cart_prdoduct_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingStart="4dp"
+                android:textSize="16sp"
+                tools:text="Quantity: 2" />
+
+            <TextView
+                android:id="@+id/cart_prdoduct_sub_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingStart="4dp"
+                android:textSize="16sp"
+                tools:text="Subtotal: 24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:paddingEnd="4dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingStart="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/Qty"
+                    android:textSize="16sp" />
+
+                <com.kadirkertis.orfo.views.NumberSpinner
+                    android:id="@+id/cart_quantity_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageButton
+                        android:id="@+id/cart_refresh"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_refresh"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:contentDescription="@string/a11y_update_cart" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/cart_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_close"
+            android:contentDescription="@string/a11y_remove_from_cart" />
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

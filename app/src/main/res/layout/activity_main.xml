@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kadirkertis.orfo.ui.MainActivity">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/mainAcDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/mainAcCoordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/mainAcAppbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/mainAcToolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
+
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/mainAcSearchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/white"
+                    android:queryHint="asd" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/mainAcTabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@color/colorAccent"
+                    app:tabTextAppearance="@style/TextAppearance.Design.Tab"
+                    app:tabTextColor="@color/icons" />
+
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/mainAcPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+            </android.support.v4.view.ViewPager>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/mainAcScanFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:contentDescription="@string/a11y_scan_fab"
+                android:src="@drawable/ic_action_barcode_2"
+                app:fabSize="normal" />
+
+            <ProgressBar
+                android:id="@+id/progress_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/mainAcNavView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/drawer_header"
+            app:itemIconTint="@color/colorAccent"
+            app:itemTextColor="@color/colorSecondaryText"
+            app:menu="@menu/drawer_menu" />
+        <!--check layout_gravity attr for navigation drawer-->
+
+
+    </android.support.v4.widget.DrawerLayout>
+</layout>

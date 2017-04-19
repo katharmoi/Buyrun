@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton
+        android:id="@+id/spinner_decrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/a11y_decrement"
+        android:src="@drawable/ic_remove"
+        android:backgroundTint="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/spinner_current_value"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/spinner_increment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/a11y_increment"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/colorAccent"/>
+
+</merge>

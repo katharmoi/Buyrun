@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/activityChat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.kadirkertis.orfo.ui.ChatActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/chatToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/online_users"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorGray"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/chattersRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+            <ProgressBar
+                android:id="@+id/progressSpinner"
+                style="@style/Base.Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="@string/chat_header"
+                android:textColor="@color/colorPrimary"
+                android:paddingLeft="8dp"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorGray"
+                android:paddingLeft="30dp"
+                android:paddingStart="30dp" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.kadirkertis.orfo.views.EmptyRecyclerView
+                    android:id="@+id/messagesRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:stackFromEnd="true" />
+                <TextView
+                    android:id="@+id/emptyView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/empty_view_no_message"
+                    android:textSize="36sp"
+                    android:visibility="gone"/>
+
+            </FrameLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/messageEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:inputType="textLongMessage" />
+
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@color/colorAccent"
+                android:enabled="false"
+                android:text="@string/send_button_label" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

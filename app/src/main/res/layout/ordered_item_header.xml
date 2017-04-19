@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:gravity="center"
+        android:text="@string/ordered_header_items"
+        android:textStyle="bold"
+        tools:text="Ordered Item" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/ordered_header_qty"
+        android:textStyle="bold"
+        android:textAppearance="?android:textAppearanceMedium"
+        tools:text="Qty" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/ordered_header_price"
+        android:textStyle="bold"
+        tools:text="Price" />
+
+    <TextView
+        android:id="@+id/ordered_item_total_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="@string/ordered_header_total"
+        android:textStyle="bold"
+        tools:text="Total" />
+
+</LinearLayout>

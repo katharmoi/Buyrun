@@ -1,0 +1,96 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kadirkertis.orfo.ui.ProductsFragment">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productsRoot">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                style="@style/ProductsCategoryHeader"
+                android:text="@string/productsFoodsHeader"
+                tools:text="FOODS"
+                android:id="@+id/foodsHead"/>
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsStartersHeader"
+                tools:text="@string/productsStartersHeader"
+                android:id="@+id/startersHead"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsFoodsStartersRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsMainCourseHeader"
+                tools:text="@string/productsMainCourseHeader"
+                android:id="@+id/mainCourseHead"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsFoodsMainCourseRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsFoodsSpecialsHeader"
+                tools:text="@string/productsFoodsSpecialsHeader"
+                android:id="@+id/specialsHead"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsFoodsSpecialsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsFoodsDessertsHeader"
+                tools:text="@string/productsFoodsDessertsHeader"
+                android:id="@+id/dessertsHead"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsFoodsDessertsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/ProductsCategoryHeader"
+                android:text="@string/productsBeveragesHeader"
+                tools:text="BEVERAGES"
+                android:id="@+id/beveragesHead"/>
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsBeveragesAlcoholicHeader"
+                tools:text="@string/productsBeveragesAlcoholicHeader"
+                android:id="@+id/alcoholicHead"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsBeveragesAlcoholicRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/ProductsSubCategoryHeader"
+                android:text="@string/productsBeveragesNonAlcoholicHeader"
+                tools:text="@string/productsBeveragesNonAlcoholicHeader"
+                android:id="@+id/nonAlcoholicHead"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productsBeveragesNonAlcoholicRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

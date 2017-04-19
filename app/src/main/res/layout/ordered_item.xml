@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/ordered_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="?android:textAppearanceMedium"
+        tools:text="Pizza Extravaganza" />
+
+    <TextView
+        android:id="@+id/ordered_item_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:maxLines="1"
+        tools:text="3" />
+
+    <TextView
+        android:id="@+id/ordered_item_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:maxLines="1"
+        tools:text="12.95" />
+
+    <TextView
+        android:id="@+id/ordered_item_total_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textAppearance="?android:textAppearanceMedium"
+        tools:text="38.85" />
+
+</LinearLayout>

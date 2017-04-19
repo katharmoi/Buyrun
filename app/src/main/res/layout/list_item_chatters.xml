@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    >
+
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/reviewItemImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="2dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_account_circle"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="2dp" />
+    <TextView
+        android:id="@+id/listItemChatterId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:padding="4dp"
+        tools:text="user634"/>
+</LinearLayout>
+</android.support.v7.widget.CardView>

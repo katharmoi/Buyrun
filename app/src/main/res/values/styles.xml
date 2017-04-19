@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AuthTheme" parent="AppTheme"></style>
+
+    <style name="ProductsCategoryHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/category_header_bg_height</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/category_header_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">2dp</item>
+
+    </style>
+
+    <style name="ProductsSubCategoryHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/category_sub_header_bg_height</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/category_subheader_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">2dp</item>
+
+    </style>
+
+    <style name="PlaceProfileHeaderText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/category_header_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+    <style name="CartDialogAnimation">
+        <item name="android:windowExitAnimation">@anim/cart_anim</item>
+    </style>
+
+    <style name="My_FirebaseUI" parent="FirebaseUI">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="colorControlActivated">@color/colorWhite</item>
+        <item name="colorControlHighlight">@color/colorWhite</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+    </style>
+
+
+</resources>
