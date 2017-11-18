@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">data</string>
+    <string name="unknown_uri">Unknown Uri</string>
+    <string name="db_fail_insert">Failed to insert data</string>
+</resources>

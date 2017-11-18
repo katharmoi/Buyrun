@@ -11,9 +11,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.data.OrfoDbContract;
+import com.kadirkertis.data.database.OrfoDbContract;
 import com.squareup.picasso.Picasso;
-import com.twitter.sdk.android.core.models.TwitterCollection;
 
 /**
  * Created by Kadir Kertis on 29.3.2017.

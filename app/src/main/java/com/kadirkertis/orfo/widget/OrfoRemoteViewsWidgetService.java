@@ -5,10 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -19,10 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.model.PlaceInfo;
-import com.kadirkertis.orfo.utilities.Constants;
+import com.kadirkertis.orfo.model.Place;
+import com.kadirkertis.domain.utils.Constants;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,7 +42,7 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
         private ChildEventListener mPlacesChildEventListener;
 
         private Context mContext;
-        private List<PlaceInfo> mPlaces;
+        private List<Place> mPlaces;
         private int mAppWidgetId;
 
         public OrfoRemoteViewsFactory(Context context,Intent intent){
@@ -86,7 +82,7 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
         @Override
         public RemoteViews getViewAt(int i) {
            final RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.list_item_widget);
-            PlaceInfo info = mPlaces.get(i);
+            Place info = mPlaces.get(i);
             try {
                 Bitmap b = Picasso.with(mContext)
                         .load(info.getImageUrl())
@@ -140,7 +136,7 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
                 mPlacesChildEventListener = new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        mPlaces.add(dataSnapshot.getValue(PlaceInfo.class));
+                        mPlaces.add(dataSnapshot.getValue(Place.class));
                         Intent intent = new Intent(Constants.ACTION_WIDGET_DATA_FETCHED);
                         sendBroadcast(intent);
                     }
@@ -152,7 +148,7 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
 
                     @Override
                     public void onChildRemoved(DataSnapshot dataSnapshot) {
-                        mPlaces.remove(dataSnapshot.getValue(PlaceInfo.class));
+                        mPlaces.remove(dataSnapshot.getValue(Place.class));
                         Intent intent = new Intent(Constants.ACTION_WIDGET_DATA_FETCHED);
                         sendBroadcast(intent);
                     }

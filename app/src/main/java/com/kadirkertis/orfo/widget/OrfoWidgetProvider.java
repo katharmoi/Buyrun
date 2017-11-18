@@ -11,8 +11,8 @@ import android.support.v4.app.TaskStackBuilder;
 import android.widget.RemoteViews;
 
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.ui.PlaceProfileActivity;
-import com.kadirkertis.orfo.utilities.Constants;
+import com.kadirkertis.orfo.ui.placeprofile.PlaceProfileActivity;
+import com.kadirkertis.domain.utils.Constants;
 
 /**
  * Created by Kadir Kertis on 30.3.2017.

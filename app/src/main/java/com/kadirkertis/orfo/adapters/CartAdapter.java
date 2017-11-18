@@ -14,11 +14,9 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.data.DbTaskParams;
-import com.kadirkertis.orfo.data.DbTasks;
-import com.kadirkertis.orfo.data.OrfoDbContract;
+import com.kadirkertis.data.database.OrfoDbContract;
 import com.kadirkertis.orfo.model.OrderItem;
-import com.kadirkertis.orfo.views.NumberSpinner;
+import com.kadirkertis.orfo.customViews.NumberSpinner;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -66,11 +64,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             holder.updateCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    new DbTasks(mContext).execute(
-                            new DbTaskParams(DbTasks.TASK_UPDATE_CART,
-                                    mCursor.getInt(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable._ID)),
-                                    holder.quantitySpinner.getValue())
-                    );
+//                    new DbTasks(mContext).execute(
+//                            new DbTaskParams(DbTasks.TASK_UPDATE_CART,
+//                                    mCursor.getInt(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable._ID)),
+//                                    holder.quantitySpinner.getValue())
+//                    );
                 }
             });
             Picasso.with(mContext)
@@ -87,9 +85,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    new DbTasks(mContext).execute(
-                                            new DbTaskParams(DbTasks.TASK_DELETE_FROM_CART,
-                                                    mCursor.getInt(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable._ID))));
+//                                    new DbTasks(mContext).execute(
+//                                            new DbTaskParams(DbTasks.TASK_DELETE_FROM_CART,
+//                                                    mCursor.getInt(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable._ID))));
                                 }
                             })
                             .negativeText(R.string.cancel)

@@ -43,7 +43,7 @@
                 tools:text="Starters" />
 
 
-            <com.kadirkertis.orfo.views.NumberSpinner
+            <com.kadirkertis.orfo.customViews.NumberSpinner
                 android:id="@+id/add_to_cart_quantity_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

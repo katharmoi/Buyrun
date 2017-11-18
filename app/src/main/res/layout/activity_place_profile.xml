@@ -3,5 +3,5 @@
     android:id="@+id/placeProfileContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kadirkertis.orfo.ui.PlaceProfileActivity">
+    tools:context="com.kadirkertis.orfo.ui.placeprofile.PlaceProfileActivity">
 </FrameLayout>

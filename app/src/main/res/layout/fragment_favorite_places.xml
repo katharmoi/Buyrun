@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.kadirkertis.orfo.views.EmptyRecyclerView
+    <com.kadirkertis.orfo.customViews.EmptyRecyclerView
         android:id="@+id/fav_places_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.kadirkertis.orfo.ui.FavoritePlacesFragment" />
+        tools:context="com.kadirkertis.orfo.ui.main.FavoritePlacesFragment" />
     <TextView
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"
@@ -15,7 +15,6 @@
         android:layout_gravity="center"
         android:text="@string/empty_view_no_fav"
         android:textSize="24sp"
-        android:textColor="@color/tw__composer_deep_gray"
         android:visibility="gone"/>
 
 </FrameLayout>

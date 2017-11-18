@@ -16,7 +16,7 @@ import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.ui.MainActivity;
-import com.kadirkertis.orfo.utilities.Constants;
+import com.kadirkertis.domain.utils.Constants;
 
 /**
  * Created by Kadir Kertis on 15.3.2017.

@@ -27,8 +27,6 @@
     <string name="productsBeveragesNonAlcoholicHeader">Non Alcoholic Beverages</string>
     <string name="products_title">Menu</string>
     <string name="unknow_qr_code">Unknown QR Code</string>
-    <string name="unknown_uri">Unknown Uri</string>
-    <string name="db_fail_insert">Failed to insert data</string>
     <string name="add_to_card_product_cancel_text">Cancel</string>
     <string name="money_format">%1.2f</string>
     <string name="add_to_cart_dialog_transaction_name">addToCartDialog</string>
@@ -50,7 +48,6 @@
     <string name="conn_failure">Failed to connect location service</string>
     <string name="permission_location_failure">Please allow application to use location data</string>
     <string name="scan_qr_code_prompt">Scan Qr Code</string>
-    bn
     <string name="checked_in_succesfully">Checked In Successfully</string>
     <string name="check_in_progress_message">Please wait…</string>
     <string name="checked_in_failure">Problem during check in. Please try again.</string>
@@ -94,13 +91,13 @@
     <string name="hint_review">Review</string>
     <string name="review_activity_title">Review Place</string>
     <string name="reviewed_succesfully">Your review is submitted.Thank you for your review.</string>
-    <string name="review_failure">A problem occured. Please try again later.</string>
+    <string name="review_failure">A problem occurred. Please try again later.</string>
     <string name="place_not_registered">Place not registerd</string>
     <string name="reviewMax">/5</string>
-    <string name="cant_get_review">A problem occured during getting reviews</string>
+    <string name="cant_get_review">A problem occurred during getting reviews</string>
     <string name="reviews_header">Reviews</string>
     <string name="registeration_failure_msg">A problem occurred during registeration.Please try again later</string>
-    <string name="check_user_exists">Checking user credentials...</string>
+    <string name="check_user_exists">Checking user credentials…</string>
     <string name="chat_activity_title">Chat</string>
     <string name="send_button_label">Send</string>
     <string name="chat_menu_item">Chat</string>
@@ -118,5 +115,4 @@
     <string name="check_out">Check Out</string>
     <string name="cart_product_count">product count</string>
     <string name="placeholder_text">12/17</string>
-    k
 </resources>

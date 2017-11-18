@@ -50,24 +50,33 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.data.DbTaskParams;
-import com.kadirkertis.orfo.data.DbTasks;
 import com.kadirkertis.orfo.databinding.ActivityMainBinding;
 import com.kadirkertis.orfo.model.CheckInPlace;
 import com.kadirkertis.orfo.model.CheckInUser;
-import com.kadirkertis.orfo.model.PlaceInfo;
+import com.kadirkertis.orfo.model.Place;
 import com.kadirkertis.orfo.model.User;
+import com.kadirkertis.orfo.ui.main.FavoritePlacesFragment;
+import com.kadirkertis.orfo.ui.main.PlacesFragment;
+import com.kadirkertis.orfo.ui.orderhistory.OrderHistoryActivity;
+import com.kadirkertis.orfo.ui.products.ProductsActivity;
 import com.kadirkertis.orfo.services.UserTrackingService;
-import com.kadirkertis.orfo.utilities.Constants;
-import com.kadirkertis.orfo.utilities.DepthPageTransformer;
-import com.kadirkertis.orfo.utilities.LocationUtilities;
+import com.kadirkertis.domain.utils.Constants;
+import com.kadirkertis.orfo.utils.DepthPageTransformer;
+import com.kadirkertis.orfo.utils.LocationUtilities;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    SharedPreferences sharedPreferences;
 
     private static final int RC_SIGN_IN = 1;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements
     private ActionBarDrawerToggle mToggle;
     private MyPagerAdapter myPagerAdapter;
     private FirebaseUser mUser;
-    private SharedPreferences mPrefs;
+
 
     private String mTableNumber;
     private String mStoreId;
@@ -99,8 +108,8 @@ public class MainActivity extends AppCompatActivity implements
                 @Override
                 public void onLocationDataArrived() {
                     if (binder.checkUserAtPlace()) {
-                        String lastCheckedInPlace = mPrefs.getString(Constants.PREFS_CHECKED_IN_PLACE_ID, null);
-                        long lastCheckInTime = mPrefs.getLong(Constants.PREFS_LAST_CHECK_IN_TIME, 0);
+                        String lastCheckedInPlace = sharedPreferences.getString(Constants.PREFS_CHECKED_IN_PLACE_ID, null);
+                        long lastCheckInTime = sharedPreferences.getLong(Constants.PREFS_LAST_CHECK_IN_TIME, 0);
                         if (mProgressDialog != null && mProgressDialog.isShowing()) {
                             mProgressDialog.dismiss();
                         }
@@ -109,14 +118,14 @@ public class MainActivity extends AppCompatActivity implements
                             //New Place
 
                             //Clear Cart
-                            new DbTasks(MainActivity.this).execute(new DbTaskParams(DbTasks.TASK_EMPTY_CART));
+//                            new DbTasks(MainActivity.this).execute(new DbTaskParams(DbTasks.TASK_EMPTY_CART));
 
                             unbindService(mConnection);
                             mBound = false;
                             //Check-In User
                             checkUserIn(mStoreId, mTableNumber);
 
-                            SharedPreferences.Editor editor = mPrefs.edit();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putLong(Constants.PREFS_ORDER_TIME, Long.MAX_VALUE);
                             editor.apply();
 
@@ -147,10 +156,13 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Inject dependencies
+        AndroidInjection.inject(this);
+
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        mPrefs = getSharedPreferences(Constants.PREFS_CHECKED_IN_PLACE, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constants.PREFS_CHECKED_IN_PLACE, MODE_PRIVATE);
 
         //Set up auth
         mAuth = FirebaseAuth.getInstance();
@@ -260,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements
             if (resultCode == ResultCodes.OK) {
                 showSnackbar(R.string.sign_in_successful);
                 mUser = mAuth.getCurrentUser();
-                String userId = mPrefs.getString(Constants.PREFS_USER_ID, null);
+                String userId = sharedPreferences.getString(Constants.PREFS_USER_ID, null);
                 if (userId == null) {
                     checkUserRegistered();
                 }
@@ -317,10 +329,10 @@ public class MainActivity extends AppCompatActivity implements
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                PlaceInfo placeInfo = dataSnapshot.getValue(PlaceInfo.class);
-                                if (placeInfo != null) {
-                                    if (placeInfo.getLongitude() == Double.MAX_VALUE ||
-                                            placeInfo.getLatitude() == Double.MAX_VALUE) {
+                                Place place = dataSnapshot.getValue(Place.class);
+                                if (place != null) {
+                                    if (place.getLongitude() == Double.MAX_VALUE ||
+                                            place.getLatitude() == Double.MAX_VALUE) {
                                         if (mProgressDialog.isShowing()) {
                                             mProgressDialog.dismiss();
                                         }
@@ -328,8 +340,8 @@ public class MainActivity extends AppCompatActivity implements
                                         return;
                                     }
                                     Intent intent = new Intent(getApplicationContext(), UserTrackingService.class);
-                                    intent.putExtra(Constants.EXTRA_PLACE_LAT_LONG, new double[]{placeInfo.getLatitude(), placeInfo.getLongitude()});
-                                    intent.putExtra(Constants.EXTRA_PLACE_ID, placeInfo.getId());
+                                    intent.putExtra(Constants.EXTRA_PLACE_LAT_LONG, new double[]{place.getLatitude(), place.getLongitude()});
+                                    intent.putExtra(Constants.EXTRA_PLACE_ID, place.getId());
                                     startService(intent);
                                     bindService(intent, mConnection, BIND_AUTO_CREATE);
                                 } else {
@@ -367,7 +379,7 @@ public class MainActivity extends AppCompatActivity implements
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot user : dataSnapshot.getChildren()) {
                         String userKey = user.getKey();
-                        SharedPreferences.Editor editor = mPrefs.edit();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PREFS_USER_ID, userKey);
                         editor.apply();
                         if (mProgressDialog.isShowing()) {
@@ -423,7 +435,7 @@ public class MainActivity extends AppCompatActivity implements
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        SharedPreferences.Editor editor = mPrefs.edit();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PREFS_USER_ID, key);
                         editor.apply();
                         mProgressDialog.dismiss();
@@ -453,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements
         switch (id) {
             //TODO Debug Only
             case R.id.sign_out_menu:
-                SharedPreferences.Editor editor = mPrefs.edit();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constants.PREFS_USER_ID, null);
                 editor.apply();
                 AuthUI.getInstance().signOut(this);
@@ -602,7 +614,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void checkUserIn(final String storeId, final String tableNumber) {
 
-        String userKey = mPrefs.getString(Constants.PREFS_USER_ID, null);
+        String userKey = sharedPreferences.getString(Constants.PREFS_USER_ID, null);
         String userName = mAuth.getCurrentUser().getDisplayName();
         if(userName == null){
             for(UserInfo userInfo:mUser.getProviderData()){
@@ -645,7 +657,7 @@ public class MainActivity extends AppCompatActivity implements
                         if (mProgressDialog != null && mProgressDialog.isShowing())
                             mProgressDialog.dismiss();
 
-                        SharedPreferences.Editor editor = mPrefs.edit();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PREFS_CHECKED_IN_PLACE, storeId);
                         editor.putString(Constants.PREFS_CHECKED_IN_TABLE_NUMBER, tableNumber);
                         editor.putLong(Constants.PREFS_LAST_CHECK_IN_TIME, System.currentTimeMillis());

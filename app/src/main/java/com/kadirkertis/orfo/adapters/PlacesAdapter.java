@@ -2,7 +2,6 @@ package com.kadirkertis.orfo.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.model.PlaceInfo;
+import com.kadirkertis.orfo.model.Place;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,14 +19,14 @@ import java.util.List;
  * Created by Kadir Kertis on 17.2.2017.
  */
 
-public class PlacesAdapter extends GenericAdapter<PlaceInfo,PlacesAdapter.ViewHolder> {
+public class PlacesAdapter extends GenericAdapter<Place,PlacesAdapter.ViewHolder> {
 
-    private List<PlaceInfo> mData;
+    private List<Place> mData;
     private Context mContext;
     private OnPlaceClickedListener mListener;
     private int mSelectedPosition = -1;
 
-    public PlacesAdapter(List<PlaceInfo> data, Context context, int resourceId,OnPlaceClickedListener listener) {
+    public PlacesAdapter(List<Place> data, Context context, int resourceId, OnPlaceClickedListener listener) {
         super(data, context, resourceId);
         mData = data;
         mContext = context;
@@ -43,12 +42,12 @@ public class PlacesAdapter extends GenericAdapter<PlaceInfo,PlacesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final PlaceInfo placeInfo = mData.get(position);
-        holder.placeName.setText(placeInfo.getPlaceName());
-        holder.placeType.setText(placeInfo.getPlaceType());
-        if(placeInfo.getImageUrl() != null){
+        final Place place = mData.get(position);
+        holder.placeName.setText(place.getPlaceName());
+        holder.placeType.setText(place.getPlaceType());
+        if(place.getImageUrl() != null){
             Picasso.with(mContext)
-                    .load(placeInfo.getImageUrl())
+                    .load(place.getImageUrl())
                     .placeholder(R.drawable.no_img_placeholder)
                     .error(R.drawable.no_img_placeholder)
                     .into(holder.placeImage);
@@ -59,14 +58,14 @@ public class PlacesAdapter extends GenericAdapter<PlaceInfo,PlacesAdapter.ViewHo
                 notifyItemChanged(mSelectedPosition);
                 mSelectedPosition = holder.getAdapterPosition();
                 notifyItemChanged(mSelectedPosition);
-                mListener.onPlaceClicked(placeInfo.getId(),
-                                    placeInfo.getPlaceName(),
-                        new double[]{placeInfo.getLatitude(),placeInfo.getLongitude()},
+                mListener.onPlaceClicked(place.getId(),
+                                    place.getPlaceName(),
+                        new double[]{place.getLatitude(), place.getLongitude()},
                         mSelectedPosition,holder.placeImage);
             }
         });
         holder.itemView.setSelected(position == mSelectedPosition);
-        holder.placeImage.setContentDescription(placeInfo.getPlaceName());
+        holder.placeImage.setContentDescription(place.getPlaceName());
 
     }
 

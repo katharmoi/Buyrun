@@ -3,7 +3,6 @@ package com.kadirkertis.orfo.services;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,10 +28,10 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.ui.MainActivity;
-import com.kadirkertis.orfo.ui.ReviewActivity;
-import com.kadirkertis.orfo.ui.ReviewDialogFragment;
-import com.kadirkertis.orfo.utilities.Constants;
-import com.kadirkertis.orfo.utilities.UserUtilities;
+import com.kadirkertis.orfo.ui.review.ReviewActivity;
+import com.kadirkertis.orfo.ui.review.ReviewDialogFragment;
+import com.kadirkertis.domain.utils.Constants;
+import com.kadirkertis.orfo.utils.UserUtilities;
 
 import java.util.Random;
 
@@ -203,7 +202,7 @@ public class UserTrackingService extends Service
 
     private void sendNotification(String notificationTitle, String notificationDetails) {
         Intent notificationIntent;
-        //if user made an order ,request review
+        //if user made an order ,request com.kadirkertis.orfo.review
         //else open main activity
         //Construct a task stack
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.model.Review;
-import com.kadirkertis.orfo.utilities.Constants;
+import com.kadirkertis.domain.utils.Constants;
 
 import java.util.List;
 import java.util.Map;

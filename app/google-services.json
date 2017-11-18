@@ -19,7 +19,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.kadirkertis.atyourservice",
-            "certificate_hash": "5CE9EA4347C96DB8FE4E6C17A915807C50203B62"
+            "certificate_hash": "5ce9ea4347c96db8fe4e6c17a915807c50203b62"
           }
         },
         {
@@ -63,7 +63,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.kadirkertis.orfo",
-            "certificate_hash": "5CE9EA4347C96DB8FE4E6C17A915807C50203B62"
+            "certificate_hash": "5ce9ea4347c96db8fe4e6c17a915807c50203b62"
           }
         },
         {

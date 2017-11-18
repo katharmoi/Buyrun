@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.kadirkertis.orfo.ui.ChatActivity">
+        tools:context="com.kadirkertis.orfo.ui.chat.ChatActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/chatToolbar"
@@ -78,7 +78,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.kadirkertis.orfo.views.EmptyRecyclerView
+                <com.kadirkertis.orfo.customViews.EmptyRecyclerView
                     android:id="@+id/messagesRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kadirkertis.orfo.ui.CartActivity">
+    tools:context="com.kadirkertis.orfo.ui.cart.CartActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/cart_toolbar"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        class="com.kadirkertis.orfo.ui.CartFragment"
+        class="com.kadirkertis.orfo.ui.cart.CartFragment"
         tools:layout="@layout/fragment_cart" />
     <ProgressBar
         android:id="@+id/progress_spinner"
