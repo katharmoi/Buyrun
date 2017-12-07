@@ -4,8 +4,18 @@
  Easily order at restaurants, bars ,cafes, clubs. Just scan the qr code at your table ,select what you like and order.  Put an end to waiting for the menu , waving to waiters to draw attention, or missing items. No more surprise bills . You will also know how much you spend in a time period..
 Moreover you can see who is at the place and chat with them. 
 
-# Used APIs & Frameworks
-Implemented using custom Content Provider, Sqlite ,Firebase Auth, Firebase Database, Firebase Storage, Google Locations, Google Maps and Search interface supporting custom suggestions.
+# Used Libraries
+- RxJava
+- Dagger2
+- Dagger Android
+- Firebase Auth
+- Firebase Database
+- Firebase Storage
+- Google Location
+- Google Maps 
+- Timber
+- Mockito
+- Espresso
 
 # Features
 - Quick order by scanning qr codes at the tables
