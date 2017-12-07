@@ -22,6 +22,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -105,6 +106,7 @@ dependencies {
     // Lifecycle
     compile "android.arch.lifecycle:runtime:$project.lifecycleVersion"
     compile "android.arch.lifecycle:extensions:$project.lifecycleVersion"
+    compile "android.arch.lifecycle:reactivestreams:$project.lifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
 
     //Timber

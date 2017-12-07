@@ -16,11 +16,6 @@ import dagger.Provides;
  */
 @Module
 public class ProductsActivityModule {
-    @Provides
-    @ActivityScope
-    ProductsRepositoryImpl provideProductService(FirebaseDatabase db) {
-        return new ProductsRepositoryImpl(db);
-    }
 
     @Provides
     @ActivityScope

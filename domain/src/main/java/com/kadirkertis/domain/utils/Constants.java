@@ -90,4 +90,5 @@ public class Constants {
     public static final String TYPEFACE_COND_LIGHT = "cond_light";
 
     public static final String EXTRA_USER_ID = "user_id";
+    public static final int RC_SIGN_IN = 1;
 }

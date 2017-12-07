@@ -15,4 +15,5 @@ public interface Router {
     void showMainScreen(@NonNull AppCompatActivity source);
     void showChatScreen(@NonNull AppCompatActivity source, @Nullable String storeId);
     void showPreferencesScreen(@NonNull AppCompatActivity source);
+    void showAuthScreen(@NonNull AppCompatActivity source);
 }

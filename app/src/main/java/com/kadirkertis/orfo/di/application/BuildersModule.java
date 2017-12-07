@@ -1,7 +1,8 @@
 package com.kadirkertis.orfo.di.application;
 
-import com.kadirkertis.orfo.ui.MainActivity;
 import com.kadirkertis.orfo.ui.base.activity.ActivityScope;
+import com.kadirkertis.orfo.ui.main.MainActivity;
+import com.kadirkertis.orfo.ui.main.di.MainActivityModule;
 import com.kadirkertis.orfo.ui.products.ProductsActivity;
 import com.kadirkertis.orfo.ui.products.ProductsFragment;
 import com.kadirkertis.orfo.ui.products.di.ProductsActivityModule;
@@ -15,12 +16,12 @@ import dagger.android.ContributesAndroidInjector;
 //Used to bind all subcomponents in the app
 @Module
 public abstract class BuildersModule {
-
-    @ContributesAndroidInjector
+    @ActivityScope
+    @ContributesAndroidInjector(modules = MainActivityModule.class)
     abstract MainActivity bindMainActivity();
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = {ProductsActivityModule.class})
+    @ContributesAndroidInjector(modules = ProductsActivityModule.class)
     abstract ProductsActivity bindProductsActivity();
 
     @ActivityScope

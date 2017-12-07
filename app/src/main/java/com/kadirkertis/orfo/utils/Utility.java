@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
  * Created by Kadir Kertis on 13.4.2017.
  */
 
-public class Utility {
+public class  Utility {
     public static int getColumCount(Context context, boolean isTwoPane) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;

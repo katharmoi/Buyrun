@@ -11,25 +11,19 @@ import java.util.HashMap;
 
 public class CheckInPlace {
     private String uid;
-    private String userName;
     private HashMap<String,Object> checkInTime;
 
 
     public CheckInPlace() {
     }
 
-    public CheckInPlace(String userId,String userName, HashMap<String, Object> checkInTime) {
+    public CheckInPlace(String userId, HashMap<String, Object> checkInTime) {
 
         this.uid = userId;
-        this.userName = userName;
         this.checkInTime = checkInTime;
     }
     public String getUid() {
         return uid;
-    }
-
-    public String getUserName() {
-        return userName;
     }
 
     public HashMap<String, Object> getCheckInTime() {
@@ -50,7 +44,6 @@ public class CheckInPlace {
     public HashMap<String,Object> toMap(){
         HashMap<String,Object> result = new HashMap<>();
         result.put("uid", uid);
-        result.put("userName",userName);
         result.put("checkInTime",checkInTime);
         return result;
     }

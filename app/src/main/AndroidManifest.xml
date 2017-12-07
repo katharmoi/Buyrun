@@ -23,7 +23,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC8_fhLkZx6mYOgt1L-1VC0Hu1da4wn1sw" />
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,10 +32,10 @@
         </activity>
         <activity
             android:name=".ui.products.ProductsActivity"
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
+                android:value=".ui.main.MainActivity" />
         </activity>
 
         <provider
@@ -61,17 +61,17 @@
 
         <activity
             android:name=".ui.placeprofile.PlaceProfileActivity"
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
+                android:value=".ui.main.MainActivity" />
         </activity>
         <activity
             android:name=".ui.orderhistory.OrderHistoryActivity"
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
+                android:value=".ui.main.MainActivity" />
         </activity>
 
         <receiver android:name=".widget.OrfoWidgetProvider">
@@ -92,12 +92,12 @@
         <activity
             android:name="com.kadirkertis.orfo.ui.review.ReviewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
+                android:value=".ui.main.MainActivity" />
         </activity>
-        <activity android:name=".ui.chat.ChatActivity"></activity>
+        <activity android:name=".ui.chat.ChatActivity"/>
     </application>
 
 </manifest>

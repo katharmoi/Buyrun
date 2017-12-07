@@ -31,8 +31,8 @@ public class ChatterAdapter extends GenericAdapter<CheckInPlace,ChatterAdapter.V
     @Override
     public void onBindViewHolder(ChatterAdapter.ViewHolder holder, int position) {
         CheckInPlace user = mData.get(position);
-        if(user.getUserName() != null){
-            holder.mChatter.setText(user.getUserName());
+        if(user.getUid() != null){
+            holder.mChatter.setText(user.getUid());
         }else{
             holder.mChatter.setText(mContext.getString(R.string.anonymous_user));
         }

@@ -49,7 +49,7 @@ public class DataPlace {
         this.latitude = latitude;
         this.longitude = longitude;
         HashMap<String,Object> timeLastEditedObj = new HashMap<>();
-        timeLastEditedObj.put("timestamp", ServerValue.TIMESTAMP);
+        timeLastEditedObj.put("date", ServerValue.TIMESTAMP);
         this.timeLastEdited = timeLastEditedObj;
     }
 
@@ -104,7 +104,7 @@ public class DataPlace {
         }
 
         HashMap<String,Object> timeAddedObj = new HashMap<>();
-        timeAddedObj.put("timestamp", ServerValue.TIMESTAMP);
+        timeAddedObj.put("date", ServerValue.TIMESTAMP);
         return timeAddedObj;
     }
 
@@ -114,12 +114,12 @@ public class DataPlace {
 
     @Exclude
     public long getTimeAddedLong(){
-        return (long)timeAdded.get("timestamp");
+        return (long)timeAdded.get("timeAdded");
     }
 
     @Exclude
     public long getTimeLastEditedLong(){
-        return (long) timeLastEdited.get("timestamp");
+        return (long) timeLastEdited.get("date");
     }
 
     @Exclude

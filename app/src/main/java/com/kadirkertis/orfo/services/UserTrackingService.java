@@ -26,11 +26,11 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
+import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.ui.MainActivity;
+import com.kadirkertis.orfo.ui.main.MainActivity;
 import com.kadirkertis.orfo.ui.review.ReviewActivity;
 import com.kadirkertis.orfo.ui.review.ReviewDialogFragment;
-import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.utils.UserUtilities;
 
 import java.util.Random;
@@ -44,7 +44,7 @@ public class UserTrackingService extends Service
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
     private static final String TAG = UserTrackingService.class.getSimpleName();
-    private static final int outLimit= 10;
+    private static final int outLimit = 10;
     private final IBinder mBinder = new UserTrackingServiceBinder();
     private GoogleApiClient mClient;
     private LocationRequest mLocationRequest;
@@ -56,7 +56,7 @@ public class UserTrackingService extends Service
     private OnLocationDataArrivedListener mListener;
     private SharedPreferences mPrefs;
     private String mCheckedInPlaceId;
-    private int outTick=0;
+    private int outTick = 0;
 
     public class UserTrackingServiceBinder extends Binder {
 
@@ -151,8 +151,8 @@ public class UserTrackingService extends Service
     public void onLocationChanged(Location location) {
         mUserLatLng = new LatLng(location.getLatitude(), location.getLongitude());
         //TODO if(checkedIn())
-        if(!isUserIn()){
-            if(++outTick == outLimit){
+        if (!isUserIn()) {
+            if (++outTick == outLimit) {
                 String notContent = getString(R.string.notification_user_left_place_content);
                 if (mPrefs.getLong(Constants.PREFS_ORDER_TIME, Long.MAX_VALUE) != Long.MAX_VALUE) {
                     notContent = getString(R.string.review_request);
@@ -163,7 +163,7 @@ public class UserTrackingService extends Service
                 stopSelf();
             }
 
-        }else {
+        } else {
             outTick = 0;
         }
         if (mListener != null) {

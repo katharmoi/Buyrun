@@ -2,12 +2,18 @@ package com.kadirkertis.orfo.ui.Router;
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.BuildConfig;
 import com.kadirkertis.domain.utils.Constants;
+import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.ui.cart.CartActivity;
 import com.kadirkertis.orfo.ui.chat.ChatActivity;
+
+import java.util.Arrays;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -60,4 +66,21 @@ public class RouterImpl implements Router {
     public void showPreferencesScreen(AppCompatActivity source) {
 
     }
+
+    @Override
+    public void showAuthScreen(@NonNull AppCompatActivity source) {
+        source.startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
+                        .setTheme(R.style.My_FirebaseUI)
+                        .setIsSmartLockEnabled(!BuildConfig.DEBUG)
+                        .setLogo(R.drawable.orfolognobg)
+                        .build(),
+                Constants.RC_SIGN_IN);
+    }
+
+
 }

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.ui.MainActivity;
+import com.kadirkertis.orfo.ui.main.MainActivity;
 import com.kadirkertis.domain.utils.Constants;
 
 /**
