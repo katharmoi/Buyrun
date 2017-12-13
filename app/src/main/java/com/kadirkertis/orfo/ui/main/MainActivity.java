@@ -112,6 +112,7 @@ public class MainActivity extends DaggerAppCompatActivity implements
         //Qr Code Scanning
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         disposables.add(
+
                 viewModel.parseQrResult(result)
                         .doOnSubscribe((subs)-> showProgressDialog())
                         .subscribe((success) -> {
@@ -120,7 +121,8 @@ public class MainActivity extends DaggerAppCompatActivity implements
                                 (error) -> {
                                     showSnackbar(error.getMessage());
                                     mProgressDialog.dismiss();
-                                }));
+                                })
+        );
 
 
     }
@@ -246,6 +248,7 @@ public class MainActivity extends DaggerAppCompatActivity implements
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setMessage("Getting Products");
         mProgressDialog.show();
     }
 

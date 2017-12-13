@@ -3,6 +3,11 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+
+    //Test
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.8.47'
+    compile 'org.mockito:mockito-core:2.8.47'
 }
 
 sourceCompatibility = "1.8"

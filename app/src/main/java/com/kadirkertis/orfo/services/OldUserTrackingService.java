@@ -39,11 +39,11 @@ import java.util.Random;
  * Created by Kadir Kertis on 19.3.2017.
  */
 
-public class UserTrackingService extends Service
+public class OldUserTrackingService extends Service
         implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
-    private static final String TAG = UserTrackingService.class.getSimpleName();
+    private static final String TAG = OldUserTrackingService.class.getSimpleName();
     private static final int outLimit = 10;
     private final IBinder mBinder = new UserTrackingServiceBinder();
     private GoogleApiClient mClient;

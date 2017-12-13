@@ -3,7 +3,6 @@ package com.kadirkertis.orfo.ui.main;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.LiveDataReactiveStreams;
 import android.arch.lifecycle.ViewModel;
-import android.content.SharedPreferences;
 
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
@@ -16,7 +15,7 @@ import com.kadirkertis.domain.interactor.qr.ParseQrCodeUseCase;
 import com.kadirkertis.domain.model.Item;
 import com.kadirkertis.domain.repository.UserRegisterationRepository;
 import com.kadirkertis.domain.services.AuthService;
-import com.kadirkertis.domain.services.QRCodeService;
+import com.kadirkertis.domain.services.qr.QRCodeService;
 import com.kadirkertis.domain.services.UserTrackingService;
 import com.kadirkertis.orfo.ui.main.errors.NoNetworkError;
 import com.kadirkertis.orfo.ui.main.errors.UncategorizedError;
@@ -38,11 +37,9 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainViewModel extends ViewModel {
 
-    private SharedPreferences sharedPreferences;
-
     private AuthService authService;
 
-    private QRCodeService<Object, String[]> qrCodeService;
+    private QRCodeService<Object> qrCodeService;
 
     private UserTrackingService userTrackingService;
 
@@ -57,8 +54,8 @@ public class MainViewModel extends ViewModel {
     private UserRegisterationRepository userRegisterationRepository;
 
 
-    public MainViewModel(SharedPreferences sharedPreferences,
-                         AuthService authService,
+
+    public MainViewModel(AuthService authService,
                          CheckUserInUseCase userInUseCase,
                          CheckUserOutUseCase userOutUseCase,
                          UserTrackingService userTrackingService,
@@ -66,8 +63,8 @@ public class MainViewModel extends ViewModel {
                          ParseQrCodeUseCase parseQrCodeUseCase,
                          SessionService sessionService,
                          UserRegisterationRepository userRegisterationRepository
+
     ) {
-        this.sharedPreferences = sharedPreferences;
         this.authService = authService;
         this.userInUseCase = userInUseCase;
         this.userOutUseCase = userOutUseCase;
@@ -124,6 +121,5 @@ public class MainViewModel extends ViewModel {
     public Maybe<List<Item>> parseQrResult(IntentResult result) {
         return parseQrCodeUseCase.execute(result);
     }
-
 
 }

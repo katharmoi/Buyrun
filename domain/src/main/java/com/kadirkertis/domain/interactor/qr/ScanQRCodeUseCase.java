@@ -1,6 +1,6 @@
 package com.kadirkertis.domain.interactor.qr;
 
-import com.kadirkertis.domain.services.QRCodeService;
+import com.kadirkertis.domain.services.qr.QRCodeService;
 
 import io.reactivex.Completable;
 
@@ -9,9 +9,9 @@ import io.reactivex.Completable;
  */
 
 public class ScanQRCodeUseCase {
-    private QRCodeService<Object, Object> qrService;
+    private QRCodeService<Object> qrService;
 
-    public ScanQRCodeUseCase(QRCodeService<Object, Object> qrService) {
+    public ScanQRCodeUseCase(QRCodeService<Object> qrService) {
         this.qrService = qrService;
     }
 

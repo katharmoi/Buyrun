@@ -35,7 +35,7 @@ public class ProductsRepositoryImpl implements ProductsRepository {
                         getProductsTableReference(storeId),
                         DataSnapshotMapper.listOf(DataItem.class))
                 .map(itemList -> new DataItemToItemMapperImpl().mapList(itemList))
-                .subscribeOn(Schedulers.io());
+                .subscribeOn(Schedulers.io()); 
     }
 
     public Maybe<Item> getProduct(String productId, String storeId) {

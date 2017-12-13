@@ -11,6 +11,7 @@ import com.kadirkertis.orfo.di.application.AppScope;
 import com.kadirkertis.orfo.utils.ActivityUtils;
 import com.kadirkertis.orfo.utils.ActivityUtilsImpl;
 import com.patloew.rxlocation.RxLocation;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import dagger.Module;
 import dagger.Provides;

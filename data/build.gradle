@@ -45,6 +45,8 @@ dependencies {
     //RxFirebase
     compile 'com.github.frangsierra:rx2firebase:1.1.3'
 
+
+
     //Stream
     compile 'com.annimon:stream:1.1.9'
 

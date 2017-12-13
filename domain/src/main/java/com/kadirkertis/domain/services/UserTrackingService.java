@@ -1,5 +1,7 @@
 package com.kadirkertis.domain.services;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -10,4 +12,5 @@ import io.reactivex.Single;
 public interface UserTrackingService {
     Single<Boolean> isUserIn(double placeLat, double placeLong);
     Completable checkUserOut();
+    Single<Boolean> checkPermission();
 }

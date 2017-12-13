@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.kadirkertis.orfo.App;
-import com.kadirkertis.orfo.services.UserService;
 import com.kadirkertis.orfo.ui.Router.Router;
 import com.kadirkertis.orfo.ui.Router.RouterImpl;
 
@@ -34,14 +33,8 @@ public class AppModule {
 
     @Provides
     @AppScope
-    public Router provideRouter(){
+    public Router provideRouter() {
         return new RouterImpl();
-    }
-
-    @Provides
-    @AppScope
-    UserService provideUserService() {
-        return new UserService();
     }
 
 }

@@ -22,14 +22,14 @@ import com.kadirkertis.domain.utils.Constants;
  * Created by Kadir Kertis on 15.3.2017.
  */
 
-public class CheckInIntentService extends IntentService {
+public class OldCheckInIntentService extends IntentService {
 
-    private static final String TAG =CheckInIntentService.class.getSimpleName() ;
+    private static final String TAG =OldCheckInIntentService.class.getSimpleName() ;
 
-    public CheckInIntentService(){
+    public OldCheckInIntentService(){
         super(TAG);
     }
-    public CheckInIntentService(String name) {
+    public OldCheckInIntentService(String name) {
         super(TAG);
     }
 

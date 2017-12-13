@@ -4,7 +4,10 @@ import android.app.Activity;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.kadirkertis.domain.services.QRCodeService;
+import com.kadirkertis.domain.model.QrResult;
+import com.kadirkertis.domain.services.qr.QRCodeService;
+import com.kadirkertis.domain.services.qr.ScanCancelledException;
+import com.kadirkertis.domain.services.qr.UnknownQRCodeException;
 import com.kadirkertis.domain.utils.Constants;
 
 import io.reactivex.Completable;
@@ -14,7 +17,7 @@ import io.reactivex.Single;
  * Created by Kadir Kertis on 11/23/2017.
  */
 
-public class QRCodeServiceImpl implements QRCodeService<IntentResult, String[]> {
+public class QRCodeServiceImpl implements QRCodeService<IntentResult> {
     private Activity source;
 
     public QRCodeServiceImpl(Activity source) {
@@ -27,30 +30,24 @@ public class QRCodeServiceImpl implements QRCodeService<IntentResult, String[]> 
     }
 
     @Override
-    public Single<String[]> parseCode(IntentResult result) {
+    public Single<QrResult> parseCode(IntentResult result) {
         return Single.fromCallable(() -> parseCodeBlocking(result));
     }
 
 
-    private String[] parseCodeBlocking(IntentResult result) throws Exception {
+    private QrResult parseCodeBlocking(IntentResult result) throws Exception {
 
         if (result.getContents() == null) {
             throw new ScanCancelledException("Scan canceled");
-        } else {
+        } else if(validateScanResult(result.getContents())) {
 
             String results = result.getContents();
             String[] sa = results.split("@");
-            String qrPrefix = sa[0];
             String tableNumber = sa[1];
-            String storeId = sa[2];
-
-            if (!results.contains(Constants.ORFO_PREFIX)) {
-                throw new UnknownQRCodeException("Unknown QR Code");
-            }
-            if (!qrPrefix.equals(Constants.ORFO_PREFIX)) {
-                throw new UnknownQRCodeException("Unknown QR Code");
-            }
-            return new String[]{tableNumber, storeId};
+            String placeId = sa[2];
+            return new QrResult(tableNumber, placeId);
+        }else {
+            throw  new UnknownQRCodeException("Unknown Qr Code");
         }
     }
 
@@ -62,6 +59,11 @@ public class QRCodeServiceImpl implements QRCodeService<IntentResult, String[]> 
         integrator.setCameraId(0);
         integrator.setBarcodeImageEnabled(true);
         integrator.initiateScan();
+    }
+
+    private boolean validateScanResult(String result){
+        String pattern = Constants.ORFO_PREFIX + "@.+"  +"@.+";
+        return result.matches(pattern);
     }
 
 

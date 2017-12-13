@@ -53,7 +53,7 @@
         </activity>
 
         <service
-            android:name=".services.UserTrackingService"
+            android:name=".services.OldUserTrackingService"
             android:description="@string/user_tracking_service_description"
             android:exported="false" />
 

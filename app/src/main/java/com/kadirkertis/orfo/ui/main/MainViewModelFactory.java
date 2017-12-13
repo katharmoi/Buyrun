@@ -1,18 +1,15 @@
 package com.kadirkertis.orfo.ui.main;
 
 import android.arch.lifecycle.ViewModelProvider;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.kadirkertis.data.session.SessionService;
 import com.kadirkertis.domain.interactor.checkIn.CheckUserInUseCase;
 import com.kadirkertis.domain.interactor.checkIn.CheckUserOutUseCase;
 import com.kadirkertis.domain.interactor.qr.ParseQrCodeUseCase;
-import com.kadirkertis.domain.repository.PlaceRepository;
-import com.kadirkertis.domain.repository.ProductsRepository;
 import com.kadirkertis.domain.repository.UserRegisterationRepository;
 import com.kadirkertis.domain.services.AuthService;
-import com.kadirkertis.domain.services.QRCodeService;
+import com.kadirkertis.domain.services.qr.QRCodeService;
 import com.kadirkertis.domain.services.UserTrackingService;
 
 import javax.inject.Inject;
@@ -22,9 +19,6 @@ import javax.inject.Inject;
  */
 
 public class MainViewModelFactory implements ViewModelProvider.Factory {
-
-
-    private SharedPreferences sharedPreferences;
 
     private AuthService authService;
 
@@ -44,8 +38,7 @@ public class MainViewModelFactory implements ViewModelProvider.Factory {
 
 
     @Inject
-    public MainViewModelFactory(SharedPreferences sharedPreferences,
-                                AuthService authService,
+    public MainViewModelFactory(AuthService authService,
                                 CheckUserInUseCase userInUseCase,
                                 CheckUserOutUseCase userOutUseCase,
                                 UserTrackingService userTrackingService,
@@ -53,8 +46,8 @@ public class MainViewModelFactory implements ViewModelProvider.Factory {
                                 ParseQrCodeUseCase parseQrCodeUseCase,
                                 SessionService sessionService,
                                 UserRegisterationRepository userRegisterationRepository
+
     ) {
-        this.sharedPreferences = sharedPreferences;
         this.authService = authService;
         this.userInUseCase = userInUseCase;
         this.userOutUseCase = userOutUseCase;
@@ -70,7 +63,6 @@ public class MainViewModelFactory implements ViewModelProvider.Factory {
     @Override
     public MainViewModel create(@NonNull Class modelClass) {
         return new MainViewModel(
-                sharedPreferences,
                 authService,
                 userInUseCase,
                 userOutUseCase,
