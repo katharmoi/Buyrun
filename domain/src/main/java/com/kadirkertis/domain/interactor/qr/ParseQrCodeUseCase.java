@@ -34,7 +34,7 @@ public class ParseQrCodeUseCase {
     public Maybe<List<Item>> execute(Object codeResult) {
         return qrService.parseCode(codeResult)
                 .flatMapMaybe(qrResult -> placeRepository.getPlace(qrResult.getPlaceId()))
-                .flatMap(place -> userTrackingService.isUserIn(place.getLatitude(), place.getLongitude())
+                .concatMap(place -> userTrackingService.checkUserIn(place.getLatitude(), place.getLongitude())
                     .flatMapMaybe(isIn -> {
                         if (isIn) return productsRepository.getProducts(place.getId());
                         else

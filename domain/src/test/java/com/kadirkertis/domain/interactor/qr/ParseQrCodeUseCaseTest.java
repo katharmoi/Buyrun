@@ -2,6 +2,8 @@ package com.kadirkertis.domain.interactor.qr;
 
 
 import com.kadirkertis.domain.model.Item;
+import com.kadirkertis.domain.model.Place;
+import com.kadirkertis.domain.model.QrResult;
 import com.kadirkertis.domain.repository.PlaceRepository;
 import com.kadirkertis.domain.repository.ProductsRepository;
 import com.kadirkertis.domain.services.UserTrackingService;
@@ -22,6 +24,9 @@ import io.reactivex.Single;
 import io.reactivex.observers.TestObserver;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -33,9 +38,6 @@ public class ParseQrCodeUseCaseTest {
     public MockitoRule rule = MockitoJUnit.rule();
 
     @Mock
-    UserTrackingService mockTrackingService;
-
-    @Mock
     QRCodeService<Object> mockQrCodeService;
 
     @Mock
@@ -44,22 +46,45 @@ public class ParseQrCodeUseCaseTest {
     @Mock
     ProductsRepository mockProductsRepository;
 
+    @Mock UserTrackingService mockTrackingService;
+
     @InjectMocks
     ParseQrCodeUseCase qrCodeUseCase;
 
+    private static QrResult mockQrResult = new QrResult("2", "3");
+    private static Place mockPlace = new Place("1", "some",
+            "me", "asd@asd.com", "asd", "123", "ss", "asd",
+            100, 1000, 100, 1000);
+
 
     @Test
-    public void shouldReturnItems() {
-
-        when(mockQrCodeService.parseCode(any())).thenReturn(any());
-        when(mockTrackingService.isUserIn(any(), any())).thenReturn(Single.just(true));
-        when(mockPlaceRepository.getPlace(any())).thenReturn(any());
+    public void shouldThrowUserNotAtPlaceError(){
+        when(mockQrCodeService.parseCode(any())).thenReturn(Single.just(mockQrResult));
+        when(mockTrackingService.checkUserIn(anyDouble(),anyDouble())).thenReturn(Single.just(false));
+        when(mockPlaceRepository.getPlace(any())).thenReturn(Maybe.just(mockPlace));
         when(mockProductsRepository.getProducts(any())).thenReturn(Maybe.just(returnMockItemList()));
-        TestObserver<List<Item>> observer = qrCodeUseCase.execute(null).test();
-        observer.awaitTerminalEvent();
 
-        observer.assertNoErrors()
-                .assertValue(returnMockItemList());
+        TestObserver<List<Item>> resultTestObserver = qrCodeUseCase.execute("some").test();
+
+        verify(mockQrCodeService,times(1)).parseCode(any());
+        verify(mockPlaceRepository,times(1)).getPlace(any());
+        verify(mockProductsRepository,times(0)).getProducts("1");
+
+        resultTestObserver.assertError(UserNotAtPlaceException.class);
+    }
+
+    @Test
+    public void shouldReturnListOfItemsWhenOthersWork() {
+
+        when(mockQrCodeService.parseCode(any())).thenReturn(Single.just(mockQrResult));
+        when(mockTrackingService.checkUserIn(anyDouble(),anyDouble())).thenReturn(Single.just(true));
+        when(mockPlaceRepository.getPlace(any())).thenReturn(Maybe.just(mockPlace));
+        when(mockProductsRepository.getProducts(any())).thenReturn(Maybe.just(returnMockItemList()));
+
+        TestObserver<List<Item>> resultTestObserver = qrCodeUseCase.execute("some").test();
+
+
+        resultTestObserver.assertValue(items -> items.get(0).getName().equals("New York Steak"));
 
     }
 

@@ -5,6 +5,9 @@ package com.kadirkertis.domain.interactor.qr;
  */
 
 class UserNotAtPlaceException extends RuntimeException {
+    public UserNotAtPlaceException() {
+    }
+
     public UserNotAtPlaceException(String message) {
         super(message);
     }

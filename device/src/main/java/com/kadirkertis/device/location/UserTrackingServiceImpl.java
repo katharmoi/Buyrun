@@ -40,7 +40,7 @@ public class UserTrackingServiceImpl implements UserTrackingService {
 
 
     @Override
-    public Single<Boolean> isUserIn(double placeLat, double placeLong) {
+    public Single<Boolean> checkUserIn(double placeLat, double placeLong) {
         float[] results = new float[1];
         return getCurrentLocation()
                 .map(location -> {
