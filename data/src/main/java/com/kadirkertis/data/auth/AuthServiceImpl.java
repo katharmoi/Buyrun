@@ -1,7 +1,7 @@
 package com.kadirkertis.data.auth;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.kadirkertis.domain.services.AuthService;
+import com.kadirkertis.domain.services.auth.AuthService;
 
 import durdinapps.rxfirebase2.RxFirebaseAuth;
 import io.reactivex.Observable;

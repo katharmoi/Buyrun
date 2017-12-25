@@ -5,7 +5,7 @@ import android.location.Location;
 
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.kadirkertis.domain.services.UserTrackingService;
+import com.kadirkertis.domain.services.location.UserTrackingService;
 import com.patloew.rxlocation.RxLocation;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 

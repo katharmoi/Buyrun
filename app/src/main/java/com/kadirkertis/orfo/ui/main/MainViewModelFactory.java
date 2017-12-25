@@ -8,9 +8,9 @@ import com.kadirkertis.domain.interactor.checkIn.CheckUserInUseCase;
 import com.kadirkertis.domain.interactor.checkIn.CheckUserOutUseCase;
 import com.kadirkertis.domain.interactor.qr.ParseQrCodeUseCase;
 import com.kadirkertis.domain.repository.UserRegisterationRepository;
-import com.kadirkertis.domain.services.AuthService;
+import com.kadirkertis.domain.services.auth.AuthService;
 import com.kadirkertis.domain.services.qr.QRCodeService;
-import com.kadirkertis.domain.services.UserTrackingService;
+import com.kadirkertis.domain.services.location.UserTrackingService;
 
 import javax.inject.Inject;
 

@@ -70,7 +70,7 @@ public class MainActivity extends DaggerAppCompatActivity implements
 
         //Redirect User To Sign Up if not auth
         viewModel.getAuthObservable().observe(this, auth -> {
-            if (auth.getCurrentUser() == null) {
+            if (auth != null && auth.getCurrentUser() == null) {
                 router.showAuthScreen(this);
             }
         });

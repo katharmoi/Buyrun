@@ -25,7 +25,8 @@ public class PlaceRepositoryImpl implements PlaceRepository {
 
     @Override
     public Maybe<Place> getPlace(String placeId) {
-        return RxFirebaseDatabase.observeSingleValueEvent(getPlaceDatabaseReference(placeId), DataPlace.class)
+        return RxFirebaseDatabase
+                .observeSingleValueEvent(getPlaceDatabaseReference(placeId), DataPlace.class)
                 .map((dataPlace -> (new DataPlaceToPlaceMapperImpl()).map(dataPlace)));
 
     }

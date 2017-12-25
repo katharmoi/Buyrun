@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.kadirkertis.data.auth.AuthServiceImpl;
 import com.kadirkertis.data.session.SessionService;
 import com.kadirkertis.data.session.SessionServiceImpl;
-import com.kadirkertis.domain.services.AuthService;
+import com.kadirkertis.domain.services.auth.AuthService;
 import com.kadirkertis.orfo.di.application.AppScope;
 
 import dagger.Module;

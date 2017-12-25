@@ -6,7 +6,7 @@ import com.kadirkertis.domain.model.Place;
 import com.kadirkertis.domain.model.QrResult;
 import com.kadirkertis.domain.repository.PlaceRepository;
 import com.kadirkertis.domain.repository.ProductsRepository;
-import com.kadirkertis.domain.services.UserTrackingService;
+import com.kadirkertis.domain.services.location.UserTrackingService;
 import com.kadirkertis.domain.services.qr.QRCodeService;
 
 import org.junit.Rule;

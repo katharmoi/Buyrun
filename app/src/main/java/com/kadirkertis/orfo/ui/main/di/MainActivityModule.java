@@ -6,7 +6,7 @@ import com.kadirkertis.domain.interactor.qr.ParseQrCodeUseCase;
 import com.kadirkertis.domain.repository.PlaceRepository;
 import com.kadirkertis.domain.repository.ProductsRepository;
 import com.kadirkertis.domain.services.qr.QRCodeService;
-import com.kadirkertis.domain.services.UserTrackingService;
+import com.kadirkertis.domain.services.location.UserTrackingService;
 import com.kadirkertis.orfo.ui.base.activity.ActivityScope;
 import com.kadirkertis.orfo.ui.main.MainActivity;
 import com.patloew.rxlocation.RxLocation;

@@ -1,4 +1,4 @@
-package com.kadirkertis.domain.services;
+package com.kadirkertis.domain.services.location;
 
 
 import io.reactivex.Completable;

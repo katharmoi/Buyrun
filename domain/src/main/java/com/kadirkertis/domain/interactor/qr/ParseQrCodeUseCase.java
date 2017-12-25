@@ -4,7 +4,7 @@ import com.kadirkertis.domain.model.Item;
 import com.kadirkertis.domain.repository.PlaceRepository;
 import com.kadirkertis.domain.repository.ProductsRepository;
 import com.kadirkertis.domain.services.qr.QRCodeService;
-import com.kadirkertis.domain.services.UserTrackingService;
+import com.kadirkertis.domain.services.location.UserTrackingService;
 
 import java.util.List;
 
