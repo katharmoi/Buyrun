@@ -30,7 +30,6 @@
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:layout_scrollFlags="scroll|enterAlways"/>
 
-
                 <android.support.v7.widget.SearchView
                     android:id="@+id/mainAcSearchView"
                     android:layout_width="match_parent"

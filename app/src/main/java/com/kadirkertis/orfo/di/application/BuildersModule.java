@@ -27,6 +27,4 @@ public abstract class BuildersModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = ProductsActivityModule.class)
     abstract ProductsFragment bindProductsFragment();
-
-
 }

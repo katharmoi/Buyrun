@@ -56,6 +56,10 @@ public class ParseQrCodeUseCaseTest {
             "me", "asd@asd.com", "asd", "123", "ss", "asd",
             100, 1000, 100, 1000);
 
+    @Test
+    public void shouldReturnIncompatibleQrCodeError() throws Exception {
+        when(mockQrCodeService.parseCode(any())).thenReturn(Single.just(mockQrResult));
+    }
 
     @Test
     public void shouldThrowUserNotAtPlaceError(){
@@ -76,17 +80,20 @@ public class ParseQrCodeUseCaseTest {
     @Test
     public void shouldReturnListOfItemsWhenOthersWork() {
 
+        String result = "dummy_result";
+
         when(mockQrCodeService.parseCode(any())).thenReturn(Single.just(mockQrResult));
         when(mockTrackingService.checkUserIn(anyDouble(),anyDouble())).thenReturn(Single.just(true));
         when(mockPlaceRepository.getPlace(any())).thenReturn(Maybe.just(mockPlace));
         when(mockProductsRepository.getProducts(any())).thenReturn(Maybe.just(returnMockItemList()));
 
-        TestObserver<List<Item>> resultTestObserver = qrCodeUseCase.execute("some").test();
+        TestObserver<List<Item>> resultTestObserver = qrCodeUseCase.execute(result).test();
 
 
         resultTestObserver.assertValue(items -> items.get(0).getName().equals("New York Steak"));
 
     }
+
 
     private List<Item> returnMockItemList() {
         Item item1 = new Item("1", "food", "beefs", "New York Steak",

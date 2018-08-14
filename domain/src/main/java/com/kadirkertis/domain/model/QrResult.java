@@ -11,6 +11,7 @@ public class QrResult {
     private String tableNumber;
     private String placeId;
 
+
     public QrResult(String tableNumber, String placeId) {
         this.tableNumber = tableNumber;
         this.placeId = placeId;

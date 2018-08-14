@@ -21,25 +21,25 @@ public final class UtilsModule {
 
     @Provides
     @AppScope
-    ActivityUtils provideActivityUtils(){
+    ActivityUtils provideActivityUtils() {
         return new ActivityUtilsImpl();
     }
 
     @Provides
     @AppScope
-    NotificationManagerCompat provideNotificationsManagerCompat(Context context){
+    NotificationManagerCompat provideNotificationsManagerCompat(Context context) {
         return NotificationManagerCompat.from(context);
     }
 
     @Provides
     @AppScope
-    Notifications provideNotifications(NotificationManagerCompat notificationManagerCompat){
+    Notifications provideNotifications(NotificationManagerCompat notificationManagerCompat) {
         return new NotificationsImpl(notificationManagerCompat);
     }
 
     @Provides
     @AppScope
-    RxLocation  provideRxLocation(Context context){
+    RxLocation provideRxLocation(Context context) {
         return new RxLocation(context);
     }
 

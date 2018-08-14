@@ -1,4 +1,5 @@
 package com.kadirkertis.domain.services.auth;
+
 import io.reactivex.Observable;
 
 /**
@@ -6,5 +7,5 @@ import io.reactivex.Observable;
  */
 
 public interface AuthService<T> {
-    public Observable<T> observeAuth();
+    Observable<T> observeAuth();
 }

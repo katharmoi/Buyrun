@@ -9,8 +9,8 @@ import com.kadirkertis.orfo.di.application.shared.UseCaseModule;
 import com.kadirkertis.orfo.di.application.shared.UtilsModule;
 import com.kadirkertis.orfo.firebase.FirebaseModule;
 
-import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
@@ -28,15 +28,9 @@ import dagger.android.support.AndroidSupportInjectionModule;
         ServicesModule.class,
         RepositoriesModule.class
 })
-public interface AppComponent {
+public interface AppComponent extends AndroidInjector<App> {
 
     @Component.Builder
-    interface Builder {
-        @BindsInstance
-        Builder application(App application);
-
-        AppComponent build();
+    abstract class Builder extends AndroidInjector.Builder<App> {
     }
-
-    void inject(App app);
 }

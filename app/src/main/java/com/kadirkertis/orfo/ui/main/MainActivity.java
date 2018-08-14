@@ -37,7 +37,7 @@ import dagger.android.support.HasSupportFragmentInjector;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class MainActivity extends DaggerAppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener, HasSupportFragmentInjector {
+        NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     MainViewModelFactory viewModelFactory;

@@ -7,7 +7,6 @@ package com.kadirkertis.domain.services.qr;
 public class ScanCancelledException extends RuntimeException {
     public ScanCancelledException() {
     }
-
     public ScanCancelledException(String message) {
         super(message);
     }

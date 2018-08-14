@@ -21,19 +21,19 @@ public class AppModule {
 
     @Provides
     @AppScope
-    Context provideAppContext(App application) {
+    public static Context provideAppContext(App application) {
         return application;
     }
 
     @Provides
     @AppScope
-    public SharedPreferences provideSharedPreferences(Context context) {
+    public static SharedPreferences provideSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Provides
     @AppScope
-    public Router provideRouter() {
+    public static Router provideRouter() {
         return new RouterImpl();
     }
 
