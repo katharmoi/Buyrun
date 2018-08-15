@@ -4,14 +4,15 @@ import com.kadirkertis.domain.interactor.type.MaybeUseCaseWithParameter;
 import com.kadirkertis.domain.model.Item;
 import com.kadirkertis.domain.repository.ProductsRepository;
 
+import java.util.Map;
+
 import io.reactivex.Maybe;
-import javafx.util.Pair;
 
 /**
  * Created by Kadir Kertis on 11/4/2017.
  */
 
-public class GetSingleProductUseCase implements MaybeUseCaseWithParameter<Pair<String,String>, Item> {
+public class GetSingleProductUseCase implements MaybeUseCaseWithParameter<Map.Entry<String, String>, Item> {
 
     private final ProductsRepository productsRepository;
 
@@ -20,7 +21,7 @@ public class GetSingleProductUseCase implements MaybeUseCaseWithParameter<Pair<S
     }
 
     @Override
-    public Maybe<Item> execute(Pair<String,String> params) {
+    public Maybe<Item> execute(Map.Entry<String, String> params) {
         return productsRepository.getProduct(params.getKey(), params.getValue());
     }
 }
