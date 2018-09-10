@@ -19,7 +19,7 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.cart_toolbar);
+        Toolbar toolbar = findViewById(R.id.cart_toolbar);
         toolbar.setTitle(getString(R.string.cart_activity_title));
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_arrow_back));

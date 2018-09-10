@@ -2,7 +2,7 @@ package com.kadirkertis.data.mappers;
 
 import com.annimon.stream.Stream;
 import com.kadirkertis.data.model.DataItem;
-import com.kadirkertis.domain.model.Item;
+import com.kadirkertis.domain.interactor.product.model.Item;
 
 import java.util.List;
 

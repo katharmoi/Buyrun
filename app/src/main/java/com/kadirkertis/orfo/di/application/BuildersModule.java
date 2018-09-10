@@ -1,11 +1,11 @@
 package com.kadirkertis.orfo.di.application;
 
-import com.kadirkertis.orfo.ui.base.activity.ActivityScope;
+import com.kadirkertis.orfo.di.activity.ActivityScope;
+import com.kadirkertis.orfo.di.fragment.FragmentScope;
 import com.kadirkertis.orfo.ui.main.MainActivity;
 import com.kadirkertis.orfo.ui.main.di.MainActivityModule;
-import com.kadirkertis.orfo.ui.products.ProductsActivity;
-import com.kadirkertis.orfo.ui.products.ProductsFragment;
-import com.kadirkertis.orfo.ui.products.di.ProductsActivityModule;
+import com.kadirkertis.orfo.ui.main.fragments.places.PlacesFragment;
+import com.kadirkertis.orfo.ui.main.fragments.places.di.PlacesFragmentModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -16,15 +16,19 @@ import dagger.android.ContributesAndroidInjector;
 //Used to bind all subcomponents in the app
 @Module
 public abstract class BuildersModule {
+
     @ActivityScope
-    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    @ContributesAndroidInjector(modules = {MainActivityModule.class, PlacesFragmentModule.class})
     abstract MainActivity bindMainActivity();
 
-    @ActivityScope
-    @ContributesAndroidInjector(modules = ProductsActivityModule.class)
-    abstract ProductsActivity bindProductsActivity();
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract PlacesFragment bindPlacesFragment();
 
-    @ActivityScope
-    @ContributesAndroidInjector(modules = ProductsActivityModule.class)
-    abstract ProductsFragment bindProductsFragment();
+
+//    @ContributesAndroidInjector(modules = ProductsActivityModule.class)
+//    abstract ProductsActivity bindProductsActivity();
+//
+//    @ContributesAndroidInjector(modules = ProductsActivityModule.class)
+//    abstract ProductsFragment bindProductsFragment();
 }

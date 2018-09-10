@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--ThemeColors-->
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorPrimaryLight">#FFCDD2</color>
+    <color name="colorAccent">#FFC107</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="widgetBg">#33a1887f</color>
+    <color name="badgeBg">#d50000</color>
+    <color name="colorChatBlue">#90caf9</color>
+    <color name="colorGreen">#ccff90</color>
+    <color name="colorGray">#bdbdbd</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorOrderBg">#e0f2f1</color>
+</resources>

@@ -88,7 +88,7 @@
                     android:text="@string/Qty"
                     android:textSize="16sp" />
 
-                <com.kadirkertis.orfo.customViews.NumberSpinner
+                <com.kadirkertis.orfo.utils.NumberSpinner
                     android:id="@+id/cart_quantity_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />

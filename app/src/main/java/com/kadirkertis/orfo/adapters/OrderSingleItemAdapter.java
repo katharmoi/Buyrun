@@ -22,7 +22,7 @@ public class OrderSingleItemAdapter extends ArrayAdapter<OrderItem> {
     private static final int VIEW_TYPE_HEADER = 0;
     private static final int VIEW_TYPE_LIST = 1;
 
-    private List<OrderItem> mItems;
+    private final List<OrderItem> mItems;
     private static class ViewHolder {
         TextView itemName;
         TextView itemPrice;
@@ -54,10 +54,10 @@ public class OrderSingleItemAdapter extends ArrayAdapter<OrderItem> {
                 viewHolder = new ViewHolder();
 
                 convertView = inflator.inflate(R.layout.ordered_item, parent, false);
-                viewHolder.itemName = (TextView) convertView.findViewById(R.id.ordered_item_name);
-                viewHolder.quantity = (TextView) convertView.findViewById(R.id.ordered_item_quantity);
-                viewHolder.itemPrice = (TextView) convertView.findViewById(R.id.ordered_item_price);
-                viewHolder.totalPrice = (TextView) convertView.findViewById(R.id.ordered_item_total_price);
+                viewHolder.itemName = convertView.findViewById(R.id.ordered_item_name);
+                viewHolder.quantity = convertView.findViewById(R.id.ordered_item_quantity);
+                viewHolder.itemPrice = convertView.findViewById(R.id.ordered_item_price);
+                viewHolder.totalPrice = convertView.findViewById(R.id.ordered_item_total_price);
 
             }else{
                 viewHolder = (ViewHolder) convertView.getTag();

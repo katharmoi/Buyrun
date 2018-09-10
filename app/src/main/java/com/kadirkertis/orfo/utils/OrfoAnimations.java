@@ -2,6 +2,8 @@ package com.kadirkertis.orfo.utils;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
@@ -39,6 +41,7 @@ public class OrfoAnimations {
         return fromAtoB;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void revealEffectShow(final Context context, final View view) {
         int cx = view.getWidth();
         int cy = view.getHeight();

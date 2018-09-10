@@ -68,10 +68,10 @@ public class ReviewDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.review_dialog_fragment,container,false);
-        mReviewTitle = (EditText) root.findViewById(R.id.reviewTitleText);
-        mReviewText = (EditText) root.findViewById(R.id.reviewText);
-        mRatingBar = (RatingBar) root.findViewById(R.id.reviewRatingBar);
-        Button sendBtn = (Button) root.findViewById(R.id.reviewSendBtn);
+        mReviewTitle = root.findViewById(R.id.reviewTitleText);
+        mReviewText = root.findViewById(R.id.reviewText);
+        mRatingBar = root.findViewById(R.id.reviewRatingBar);
+        Button sendBtn = root.findViewById(R.id.reviewSendBtn);
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +79,7 @@ public class ReviewDialogFragment extends DialogFragment {
             }
         });
 
-        Button cancelBtn = (Button) root.findViewById(R.id.reviewCancelBtn);
+        Button cancelBtn = root.findViewById(R.id.reviewCancelBtn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

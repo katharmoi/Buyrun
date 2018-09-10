@@ -13,10 +13,11 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.kadirkertis.domain.interactor.product.model.Item;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.data.database.OrfoDbContract;
 import com.kadirkertis.orfo.model.OrderItem;
-import com.kadirkertis.orfo.customViews.NumberSpinner;
+import com.kadirkertis.orfo.utils.NumberSpinner;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-    private Context mContext;
+    private final Context mContext;
     private Cursor mCursor;
 
     public CartAdapter(Context context, Cursor cursor) {
@@ -71,7 +72,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 //                    );
                 }
             });
-            Picasso.with(mContext)
+
+            Picasso.get()
                     .load(mCursor.getString(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable.COLUMN_IMAGE_URL)))
                     .placeholder(R.drawable.no_img_placeholder)
                     .error(R.drawable.no_img_placeholder)
@@ -108,26 +110,26 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImage;
-        TextView productName;
-        TextView productQuantity;
-        TextView productPrice;
-        TextView productSubTotal;
-        ImageButton clearBtn;
-        NumberSpinner quantitySpinner;
-        ImageButton updateCart;
+        final ImageView productImage;
+        final TextView productName;
+        final TextView productQuantity;
+        final TextView productPrice;
+        final TextView productSubTotal;
+        final ImageButton clearBtn;
+        final NumberSpinner quantitySpinner;
+        final ImageButton updateCart;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            productImage = (ImageView) itemView.findViewById(R.id.cart_product_image);
-            productName = (TextView) itemView.findViewById(R.id.cart_prdoduct_name);
-            productQuantity = (TextView) itemView.findViewById(R.id.cart_prdoduct_quantity);
-            productPrice = (TextView) itemView.findViewById(R.id.cart_prdoduct_price);
-            productSubTotal = (TextView) itemView.findViewById(R.id.cart_prdoduct_sub_total);
-            clearBtn = (ImageButton) itemView.findViewById(R.id.cart_clear);
-            quantitySpinner = (NumberSpinner) itemView.findViewById(R.id.cart_quantity_spinner);
-            updateCart = (ImageButton) itemView.findViewById(R.id.cart_refresh);
+            productImage = itemView.findViewById(R.id.cart_product_image);
+            productName = itemView.findViewById(R.id.cart_prdoduct_name);
+            productQuantity = itemView.findViewById(R.id.cart_prdoduct_quantity);
+            productPrice = itemView.findViewById(R.id.cart_prdoduct_price);
+            productSubTotal = itemView.findViewById(R.id.cart_prdoduct_sub_total);
+            clearBtn = itemView.findViewById(R.id.cart_clear);
+            quantitySpinner = itemView.findViewById(R.id.cart_quantity_spinner);
+            updateCart = itemView.findViewById(R.id.cart_refresh);
         }
     }
 
@@ -156,8 +158,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return total;
     }
 
-    public List<OrderItem> getOrder(){
-       List<OrderItem> order = new ArrayList<>();
+    public List<Item> getOrder(){
+       List<Item> order = new ArrayList<>();
         if(mCursor.moveToFirst()){
             do{
                 String productId =mCursor.getString(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable.COLUMN_PRODUCT_ID));
@@ -166,7 +168,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                         mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable.COLUMN_PRICE));
                 int quantity =  mCursor.getInt(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable.COLUMN_QUANTITY));
                 String imageUrl = mCursor.getString(mCursor.getColumnIndex(OrfoDbContract.OrfoCartTable.COLUMN_IMAGE_URL));
-                OrderItem item = new OrderItem(productId,name,price,quantity,imageUrl);
+                Item item = new Item(productId,name,price,quantity,imageUrl);
                 order.add(item);
             }while (mCursor.moveToNext());
 

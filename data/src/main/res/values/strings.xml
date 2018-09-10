@@ -2,4 +2,6 @@
     <string name="app_name">data</string>
     <string name="unknown_uri">Unknown Uri</string>
     <string name="db_fail_insert">Failed to insert data</string>
+    <string name="auth_messages_user_cancelled">User Cancelled Operation</string>
+    <string name="auth_messages_user_not_authenticated">User Not Authenticated</string>
 </resources>

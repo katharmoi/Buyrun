@@ -14,11 +14,13 @@ import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.databinding.ActivityProductsBinding;
 import com.kadirkertis.orfo.ui.Router.Router;
-import com.kadirkertis.orfo.ui.base.activity.DaggerAppCompatActivity;
 import com.kadirkertis.orfo.ui.main.AddToCartDialogFragment;
+import com.kadirkertis.orfo.ui.products.fragments.ProductsFragment;
 import com.kadirkertis.orfo.utils.ActivityUtils;
 
 import javax.inject.Inject;
+
+import dagger.android.support.DaggerAppCompatActivity;
 
 
 public class ProductsActivity extends DaggerAppCompatActivity
@@ -117,7 +119,7 @@ public class ProductsActivity extends DaggerAppCompatActivity
                 router.showCartScreen(ProductsActivity.this);
             }
         });
-        cartCountTextView = (TextView) cartMenu.findViewById(R.id.txtCount);
+        cartCountTextView = cartMenu.findViewById(R.id.txtCount);
         viewModel.updateCartCount();
         return true;
     }
@@ -135,7 +137,6 @@ public class ProductsActivity extends DaggerAppCompatActivity
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 
 }

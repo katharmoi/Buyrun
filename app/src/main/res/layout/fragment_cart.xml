@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.kadirkertis.orfo.customViews.EmptyRecyclerView
+        <com.kadirkertis.orfo.utils.EmptyRecyclerView
             android:id="@+id/cart_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

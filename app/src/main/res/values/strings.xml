@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">OrFo</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user">User</string>
     <string name="settings">Settings</string>
     <string name="drawer_open">Drawer Open</string>
@@ -12,7 +11,7 @@
     <string name="sign_in_cancelled">Sign in cancelled by user</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="unknown_error">Unknown error occurred</string>
-    <string name="sign_in_successful">Successfully signed id</string>
+    <string name="sign_in_successful">Successfully Signed In</string>
     <string name="sign_out">Sign Out</string>
     <string name="scan_cancelled">Scan Cancelled</string>
     <string name="a11y_product_image">Product Image</string>
@@ -115,4 +114,8 @@
     <string name="check_out">Check Out</string>
     <string name="cart_product_count">product count</string>
     <string name="placeholder_text">12/17</string>
+    <string name="auth_messages_loading">Checking User Credentials…</string>
+    <string name="auth_messages_not_authorized">User Not Authorized. Routing to Auth Screen</string>
+    <string name="place_messages_place_loading">Loading Menu</string>
+    <string name="place_messages_place_loading_error">Error Loading Place Menu</string>
 </resources>

@@ -4,6 +4,7 @@ import com.kadirkertis.orfo.di.application.DaggerAppComponent;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
+import rx_activity_result2.RxActivityResult;
 import timber.log.Timber;
 
 /**
@@ -21,6 +22,7 @@ public class App extends DaggerApplication {
                 return super.createStackElementTag(element) + ":" + element.getLineNumber();
             }
         });
+        RxActivityResult.register(this);
 
     }
 
@@ -28,6 +30,5 @@ public class App extends DaggerApplication {
     protected AndroidInjector<? extends App> applicationInjector() {
         return DaggerAppComponent.builder().create(this);
     }
-
 
 }

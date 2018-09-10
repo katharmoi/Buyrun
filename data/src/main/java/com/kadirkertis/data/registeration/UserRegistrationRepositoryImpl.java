@@ -9,8 +9,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.kadirkertis.data.model.User;
-import com.kadirkertis.data.session.SessionService;
-import com.kadirkertis.domain.repository.UserRegisterationRepository;
+import com.kadirkertis.domain.interactor.registeration.exceptions.UserDataDoesNotExistOnAuthError;
+import com.kadirkertis.domain.interactor.session.repository.SessionRepository;
+import com.kadirkertis.domain.interactor.registeration.repository.UserRegisterationRepository;
 import com.kadirkertis.domain.utils.Constants;
 
 import java.util.HashMap;
@@ -26,19 +27,19 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserRegistrationRepositoryImpl implements UserRegisterationRepository {
 
-    private SessionService sessionService;
-    private FirebaseDatabase db;
-    private FirebaseAuth auth;
+    private final SessionRepository sessionRepository;
+    private final FirebaseDatabase db;
+    private final FirebaseAuth auth;
 
-    public UserRegistrationRepositoryImpl(SessionService sessionService, FirebaseDatabase db,
+    public UserRegistrationRepositoryImpl(SessionRepository sessionRepository, FirebaseDatabase db,
                                           FirebaseAuth auth) {
-        this.sessionService = sessionService;
+        this.sessionRepository = sessionRepository;
         this.db = db;
         this.auth = auth;
     }
 
     @Override
-    public Completable saveAuthUserToDbUser() {
+    public Completable registerUser() {
         final String uid = db.getReference()
                 .child(Constants.DB_USERS)
                 .push()
@@ -60,12 +61,16 @@ public class UserRegistrationRepositoryImpl implements UserRegisterationReposito
             User user = new User(uid, userName, fbUser.getEmail(), regDate);
 
             return RxFirebaseDatabase.setValue(getUserReference(uid), user)
-                    .concatWith(sessionService.setUser(uid))
                     .subscribeOn(Schedulers.io());
         } else
             return Completable.error(new UserDataDoesNotExistOnAuthError());
 
 
+    }
+
+    @Override
+    public Completable unregisterUser() {
+        return null;
     }
 
     @Override
@@ -77,7 +82,8 @@ public class UserRegistrationRepositoryImpl implements UserRegisterationReposito
                 .equalTo(auth.getCurrentUser().getEmail());
 
         return RxFirebaseDatabase.observeSingleValueEvent(query)
-                .map(DataSnapshot::exists);
+                .map(DataSnapshot::exists)
+                .subscribeOn(Schedulers.io());
 
 
     }

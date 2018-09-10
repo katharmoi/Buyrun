@@ -1,7 +1,7 @@
 package com.kadirkertis.data.cart;
 
-import com.kadirkertis.domain.model.OrderItem;
-import com.kadirkertis.domain.repository.CartRepository;
+import com.kadirkertis.domain.interactor.product.model.OrderItem;
+import com.kadirkertis.domain.interactor.cart.repository.CartRepository;
 
 import java.util.List;
 

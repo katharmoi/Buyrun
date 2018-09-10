@@ -7,7 +7,7 @@ import android.os.RemoteException;
 
 import com.kadirkertis.data.cart.CartServiceImpl;
 import com.kadirkertis.data.database.OrfoDbContract;
-import com.kadirkertis.domain.model.OrderItem;
+import com.kadirkertis.domain.interactor.product.model.OrderItem;
 
 import java.util.ArrayList;
 

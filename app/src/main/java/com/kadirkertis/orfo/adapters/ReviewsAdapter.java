@@ -24,9 +24,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ReviewsAdapter extends GenericAdapter<Review,ReviewsAdapter.ViewHolder> {
 
-    private Typeface mBold ;
-    private Typeface mItalic;
-    private Typeface mLight;
+    private final Typeface mBold ;
+    private final Typeface mItalic;
+    private final Typeface mLight;
     public ReviewsAdapter(List<Review> data, Context context, int resourceId, Map<String,Typeface> types) {
         super(data, context, resourceId);
         mBold = types.get(Constants.TYPEFACE_COND_BOLD);
@@ -56,23 +56,23 @@ public class ReviewsAdapter extends GenericAdapter<Review,ReviewsAdapter.ViewHol
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder {
-        private CircleImageView avatar;
-        private TextView reviewerName;
-        private TextView rating;
-        private TextView reviewTitle;
-        private TextView reviewText;
+        private final CircleImageView avatar;
+        private final TextView reviewerName;
+        private final TextView rating;
+        private final TextView reviewTitle;
+        private final TextView reviewText;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            avatar = (CircleImageView) itemView.findViewById(R.id.reviewItemImage);
-            reviewerName = (TextView) itemView.findViewById(R.id.reviewItemReviewer);
+            avatar = itemView.findViewById(R.id.reviewItemImage);
+            reviewerName = itemView.findViewById(R.id.reviewItemReviewer);
             reviewerName.setTypeface(mLight);
-            rating = (TextView) itemView.findViewById(R.id.reviewItemRating);
-            reviewTitle = (TextView) itemView.findViewById(R.id.reviewItemReviewTitle);
+            rating = itemView.findViewById(R.id.reviewItemRating);
+            reviewTitle = itemView.findViewById(R.id.reviewItemReviewTitle);
             reviewTitle.setTypeface(mBold);
-            reviewText = (TextView) itemView.findViewById(R.id.reviewItemReviewText);
+            reviewText = itemView.findViewById(R.id.reviewItemReviewText);
             reviewText.setTypeface(mItalic);
         }
     }

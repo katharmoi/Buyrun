@@ -20,7 +20,7 @@ public class ReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.review_toolbar);
+        Toolbar toolbar = findViewById(R.id.review_toolbar);
         toolbar.setTitle(getString(R.string.review_activity_title));
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_arrow_back));

@@ -1,8 +1,8 @@
 package com.kadirkertis.data.fav;
 
 import com.kadirkertis.data.mappers.PlaceToDataPlaceMapperImpl;
-import com.kadirkertis.domain.model.Place;
-import com.kadirkertis.domain.repository.FavoriteRepository;
+import com.kadirkertis.domain.interactor.place.model.Place;
+import com.kadirkertis.domain.interactor.place.repository.FavoriteRepository;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;

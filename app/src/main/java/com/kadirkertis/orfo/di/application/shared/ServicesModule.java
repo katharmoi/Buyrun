@@ -1,12 +1,13 @@
 package com.kadirkertis.orfo.di.application.shared;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.kadirkertis.data.auth.AuthServiceImpl;
-import com.kadirkertis.data.session.SessionService;
-import com.kadirkertis.data.session.SessionServiceImpl;
-import com.kadirkertis.domain.services.auth.AuthService;
+import com.kadirkertis.data.session.SessionRepositoryImpl;
+import com.kadirkertis.domain.interactor.auth.repository.AuthService;
+import com.kadirkertis.domain.interactor.session.repository.SessionRepository;
 import com.kadirkertis.orfo.di.application.AppScope;
 
 import dagger.Module;
@@ -17,17 +18,11 @@ import dagger.Provides;
  */
 @Module
 public class ServicesModule {
-    @Provides
-    @AppScope
-    public static AuthService provideAuthService(FirebaseAuth auth) {
-        return new AuthServiceImpl(auth);
-    }
 
     @Provides
     @AppScope
-    public static SessionService provideSessionService(SharedPreferences preferences) {
-        return new SessionServiceImpl(preferences);
+    public static SessionRepository provideSessionService(SharedPreferences preferences) {
+        return new SessionRepositoryImpl(preferences);
     }
-
 
 }

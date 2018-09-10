@@ -1,8 +1,7 @@
 package com.kadirkertis.domain.interactor.cart;
 
-import com.kadirkertis.domain.model.Item;
-import com.kadirkertis.domain.model.OrderItem;
-import com.kadirkertis.domain.repository.CartRepository;
+import com.kadirkertis.domain.interactor.product.model.OrderItem;
+import com.kadirkertis.domain.interactor.cart.repository.CartRepository;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import io.reactivex.Single;
  * Created by Kadir Kertis on 11/15/2017.
  */
 
-public class GetCartUseCase {
+public final class GetCartUseCase {
 
     private final CartRepository cartRepository;
 
@@ -20,7 +19,7 @@ public class GetCartUseCase {
         this.cartRepository = cartRepository;
     }
 
-    public Single<List<OrderItem>> execute(){
-        return  cartRepository.getCart();
+    public Single<List<OrderItem>> execute() {
+        return cartRepository.getCart();
     }
 }

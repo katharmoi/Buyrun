@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.Relay;
-import com.kadirkertis.domain.model.Item;
+import com.kadirkertis.domain.interactor.product.model.Item;
 import com.kadirkertis.orfo.R;
 import com.squareup.picasso.Picasso;
 
@@ -27,13 +27,13 @@ import io.reactivex.Flowable;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private List<Item> products;
-    private Picasso picasso;
-    private FragmentManager fragmentManager;
+    private final List<Item> products;
+    private final Picasso picasso;
+    private final FragmentManager fragmentManager;
     private int[] cartIconPosition;
 
-    public Relay<Item> onAddToCartClickedRelay = PublishRelay.create();
-    public Relay<Item> onItemClickedRelay = PublishRelay.create();
+    public final Relay<Item> onAddToCartClickedRelay = PublishRelay.create();
+    public final Relay<Item> onItemClickedRelay = PublishRelay.create();
 
     public ProductAdapter(Picasso picasso, List<Item> products, FragmentManager fm) {
         this.picasso = picasso;
@@ -88,11 +88,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     static final class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView productNameTextView;
-        private TextView productDescTextView;
-        private ImageView productImageView;
-        private ImageButton addToCartBtn;
-        private Picasso picasso;
+        private final TextView productNameTextView;
+        private final TextView productDescTextView;
+        private final ImageView productImageView;
+        private final ImageButton addToCartBtn;
+        private final Picasso picasso;
 
         private final Relay<Item> addToCartClickRelay;
         private final Relay<Item> itemClickedRelay;

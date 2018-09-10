@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kadirkertis.orfo.R;
+import com.kadirkertis.orfo.ui.orderhistory.fragments.OrderHistoryFragment;
 
 public class OrderHistoryActivity extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
 
-        Toolbar tb = (Toolbar) findViewById(R.id.order_history_toolbar);
+        Toolbar tb = findViewById(R.id.order_history_toolbar);
         setSupportActionBar(tb);
         tb.setTitle(getString(R.string.order_history_ac_title));
         tb.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_arrow_back));

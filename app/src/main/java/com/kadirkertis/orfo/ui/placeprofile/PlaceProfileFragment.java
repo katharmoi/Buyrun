@@ -7,7 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -32,13 +32,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kadirkertis.domain.interactor.place.model.Place;
+import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.adapters.ReviewsAdapter;
-import com.kadirkertis.orfo.model.Place;
-import com.kadirkertis.orfo.model.Review;
-import com.kadirkertis.domain.utils.Constants;
-
 import com.kadirkertis.orfo.databinding.FragmentPlaceProfileBinding;
+import com.kadirkertis.orfo.model.Review;
 import com.kadirkertis.orfo.utils.OrfoAnimations;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -100,7 +99,7 @@ public class PlaceProfileFragment extends Fragment implements OnMapReadyCallback
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mPlace = dataSnapshot.getValue(Place.class);
-                Picasso.with(getActivity())
+                Picasso.get()
                         .load(mPlace.getImageUrl())
                         .placeholder(R.drawable.no_img_placeholder)
                         .error(R.drawable.no_img_placeholder)
@@ -111,7 +110,7 @@ public class PlaceProfileFragment extends Fragment implements OnMapReadyCallback
                             }
 
                             @Override
-                            public void onError() {
+                            public void onError(Exception e) {
 
                             }
                         });
@@ -155,6 +154,7 @@ public class PlaceProfileFragment extends Fragment implements OnMapReadyCallback
 
                 }
 
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onTransitionEnd(Transition transition) {
                     OrfoAnimations.revealEffectShow(getContext(), mBinding.placeProfileAcPlaceImage);

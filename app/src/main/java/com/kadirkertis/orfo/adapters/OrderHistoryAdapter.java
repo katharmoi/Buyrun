@@ -21,11 +21,11 @@ import java.util.List;
  */
 
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder> {
-    private List<Order> orderList;
-    private Context mContext;
-    private String mTotalPrefix;
-    private String mPlacePrefix;
-    private String mDatePrefix;
+    private final List<Order> orderList;
+    private final Context mContext;
+    private final String mTotalPrefix;
+    private final String mPlacePrefix;
+    private final String mDatePrefix;
 
     public OrderHistoryAdapter(Context context, ArrayList<Order> data) {
         mContext = context;
@@ -88,17 +88,17 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        ListView orderList;
-        TextView orderTotal;
-        TextView orderPlace;
-        TextView orderDate;
+        final ListView orderList;
+        final TextView orderTotal;
+        final TextView orderPlace;
+        final TextView orderDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            orderList = (ListView) itemView.findViewById(R.id.closed_order_item_list_view);
-            orderTotal = (TextView) itemView.findViewById(R.id.closed_order_item_total_text);
-            orderPlace = (TextView) itemView.findViewById(R.id.closed_order_item_place_name);
-            orderDate = (TextView) itemView.findViewById(R.id.closed_order_item_order_date);
+            orderList = itemView.findViewById(R.id.closed_order_item_list_view);
+            orderTotal = itemView.findViewById(R.id.closed_order_item_total_text);
+            orderPlace = itemView.findViewById(R.id.closed_order_item_place_name);
+            orderDate = itemView.findViewById(R.id.closed_order_item_order_date);
         }
     }
 }

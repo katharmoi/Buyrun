@@ -41,10 +41,10 @@ public class ChatterAdapter extends GenericAdapter<CheckInPlace,ChatterAdapter.V
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView mChatter;
+        private final TextView mChatter;
         public ViewHolder(View itemView) {
             super(itemView);
-            mChatter = (TextView) itemView.findViewById(R.id.listItemChatterId);
+            mChatter = itemView.findViewById(R.id.listItemChatterId);
         }
     }
 }

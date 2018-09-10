@@ -7,8 +7,8 @@ import com.kadirkertis.domain.interactor.cart.AddToCartUseCase;
 import com.kadirkertis.domain.interactor.cart.GetCartUseCase;
 import com.kadirkertis.domain.interactor.product.GetProductsUseCase;
 import com.kadirkertis.domain.interactor.product.GetSingleProductUseCase;
-import com.kadirkertis.domain.model.Item;
-import com.kadirkertis.domain.model.OrderItem;
+import com.kadirkertis.domain.interactor.product.model.Item;
+import com.kadirkertis.domain.interactor.product.model.OrderItem;
 import com.kadirkertis.orfo.model.CheckInPlace;
 
 import java.util.List;
@@ -43,8 +43,8 @@ public class ProductsViewModel extends ViewModel {
         disposable.clear();
     }
 
-    private MutableLiveData<CheckInPlace> currentPlace = new MutableLiveData<>();
-    private MutableLiveData<List<Item>> products = new MutableLiveData<>();
+    private final MutableLiveData<CheckInPlace> currentPlace = new MutableLiveData<>();
+    private final MutableLiveData<List<Item>> products = new MutableLiveData<>();
 
     public MutableLiveData<CheckInPlace> getCurrentPlaceObservable() {
         return currentPlace;

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import com.kadirkertis.data.database.OrfoDbContract;
-import com.kadirkertis.domain.model.OrderItem;
+import com.kadirkertis.domain.interactor.product.model.OrderItem;
 
 import java.util.ArrayList;
 

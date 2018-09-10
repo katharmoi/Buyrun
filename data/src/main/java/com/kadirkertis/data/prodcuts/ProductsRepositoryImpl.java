@@ -5,8 +5,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kadirkertis.data.mappers.DataItemToItemMapperImpl;
 import com.kadirkertis.data.model.DataItem;
-import com.kadirkertis.domain.model.Item;
-import com.kadirkertis.domain.repository.ProductsRepository;
+import com.kadirkertis.domain.interactor.product.model.Item;
+import com.kadirkertis.domain.interactor.product.repository.ProductsRepository;
 import com.kadirkertis.domain.utils.Constants;
 
 import java.util.List;
@@ -19,10 +19,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by Kadir Kertis on 11/6/2017.
  */
-
 public class ProductsRepositoryImpl implements ProductsRepository {
 
-    private FirebaseDatabase db;
+    private final FirebaseDatabase db;
 
     public ProductsRepositoryImpl(FirebaseDatabase db) {
         this.db = db;

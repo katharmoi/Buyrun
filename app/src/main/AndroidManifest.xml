@@ -9,13 +9,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:supportsRtl"
-        android:name=".App">
+        tools:replace="android:supportsRtl">
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -23,20 +23,27 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC8_fhLkZx6mYOgt1L-1VC0Hu1da4wn1sw" />
 
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.products.ProductsActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="android:screenOrientation" />
 
         <provider
             android:name="com.kadirkertis.data.database.OrfoContentProvider"
@@ -46,29 +53,27 @@
 
         <activity
             android:name=".ui.cart.CartActivity"
-            android:parentActivityName=".ui.products.ProductsActivity">
+            android:parentActivityName=".ui.products.ProductsActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.products.ProductsActivity" />
         </activity>
 
-        <service
-            android:name=".services.OldUserTrackingService"
-            android:description="@string/user_tracking_service_description"
-            android:exported="false" />
-
         <receiver android:name="com.kadirkertis.device.alarm.AlarmReceiver" />
 
         <activity
             android:name=".ui.placeprofile.PlaceProfileActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
         <activity
             android:name=".ui.orderhistory.OrderHistoryActivity"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
@@ -92,12 +97,13 @@
         <activity
             android:name="com.kadirkertis.orfo.ui.review.ReviewActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.main.MainActivity">
+            android:parentActivityName=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.main.MainActivity" />
         </activity>
-        <activity android:name=".ui.chat.ChatActivity"/>
+        <activity android:name=".ui.chat.ChatActivity" />
     </application>
 
 </manifest>

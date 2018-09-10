@@ -10,8 +10,8 @@ import android.view.View;
 
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
 
-    private int space;
-    int spanCount;
+    private final int space;
+    final int spanCount;
 
     public GridItemDecoration(int space, int spanCount) {
         this.space = space;

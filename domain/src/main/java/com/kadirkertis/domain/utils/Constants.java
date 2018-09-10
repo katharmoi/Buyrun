@@ -6,6 +6,8 @@ package com.kadirkertis.domain.utils;
 
 public class Constants {
 
+    public static final int RATE_COUNT_MIN = 10;
+
     public static final String ORFO_PREFIX = "orfo_qr_code";
 
     public static final String DB_PLACES = "places";

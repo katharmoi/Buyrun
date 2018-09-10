@@ -1,7 +1,7 @@
 package com.kadirkertis.data.mappers;
 
 import com.kadirkertis.data.model.DataPlace;
-import com.kadirkertis.domain.model.Place;
+import com.kadirkertis.domain.interactor.place.model.Place;
 
 import java.util.List;
 

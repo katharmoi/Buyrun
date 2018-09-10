@@ -69,12 +69,14 @@ public class RouterImpl implements Router {
 
     @Override
     public void showAuthScreen(@NonNull AppCompatActivity source) {
+        //TODO Add privacy policy setTosAndPrivacyPolicyUrls
         source.startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
-                        .setProviders(Arrays.asList(
-                                new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
+                        .setAvailableProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                                new AuthUI.IdpConfig.EmailBuilder().build()
+                        ))
                         .setTheme(R.style.My_FirebaseUI)
                         .setIsSmartLockEnabled(!BuildConfig.DEBUG)
                         .setLogo(R.drawable.orfolognobg)

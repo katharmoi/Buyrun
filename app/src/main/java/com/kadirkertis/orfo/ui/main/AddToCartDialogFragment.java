@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.customViews.NumberSpinner;
+import com.kadirkertis.orfo.utils.NumberSpinner;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -89,14 +89,14 @@ public class AddToCartDialogFragment extends DialogFragment {
         //if exists update mQuantity accordingly else set
         //mQuantity to one
 
-        ImageView productImage = (ImageView) root.findViewById(R.id.add_to_cart_product_img_view);
-        TextView productName = (TextView) root.findViewById(R.id.add_to_cart_product_name_text_view);
-        TextView priceText = (TextView) root.findViewById(R.id.add_to_cart_single_item_price_text);
-        final TextView quantityText = (TextView) root.findViewById(R.id.add_to_cart_quantity_text);
-        final TextView totalText = (TextView) root.findViewById(R.id.add_to_cart_total_text);
-        NumberSpinner numberSpinner = (NumberSpinner) root.findViewById(R.id.add_to_cart_quantity_spinner);
-        Button addToCartBtn = (Button) root.findViewById(R.id.add_to_cart_product_add_to_cart_btn);
-        Button cancelBtn = (Button) root.findViewById(R.id.add_to_cart_product_cancel_btn);
+        ImageView productImage = root.findViewById(R.id.add_to_cart_product_img_view);
+        TextView productName = root.findViewById(R.id.add_to_cart_product_name_text_view);
+        TextView priceText = root.findViewById(R.id.add_to_cart_single_item_price_text);
+        final TextView quantityText = root.findViewById(R.id.add_to_cart_quantity_text);
+        final TextView totalText = root.findViewById(R.id.add_to_cart_total_text);
+        NumberSpinner numberSpinner = root.findViewById(R.id.add_to_cart_quantity_spinner);
+        Button addToCartBtn = root.findViewById(R.id.add_to_cart_product_add_to_cart_btn);
+        Button cancelBtn = root.findViewById(R.id.add_to_cart_product_cancel_btn);
         final View decorView = getDialog().getWindow().getDecorView();
         addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +124,7 @@ public class AddToCartDialogFragment extends DialogFragment {
             }
         });
 
-        Picasso.with(getActivity())
+        Picasso.get()
                 .load(mImageUrl)
                 .error(R.drawable.no_img_placeholder)
                 .placeholder(R.drawable.no_img_placeholder)

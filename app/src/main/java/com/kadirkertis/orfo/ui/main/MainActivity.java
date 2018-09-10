@@ -13,28 +13,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.firebase.ui.auth.IdpResponse;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.kadirkertis.domain.interactor.auth.repository.AuthResponse;
+import com.kadirkertis.domain.interactor.checkIn.model.CheckInRequest;
 import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.R;
 import com.kadirkertis.orfo.databinding.ActivityMainBinding;
-import com.kadirkertis.orfo.ui.Router.Router;
-import com.kadirkertis.orfo.ui.base.activity.DaggerAppCompatActivity;
+import com.kadirkertis.orfo.ui.main.fragments.places.PlacesFragment;
 import com.kadirkertis.orfo.ui.orderhistory.OrderHistoryActivity;
+import com.kadirkertis.orfo.ui.products.ProductsActivity;
 import com.kadirkertis.orfo.utils.DepthPageTransformer;
+import com.kadirkertis.orfo.utils.Response;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
-import dagger.android.support.HasSupportFragmentInjector;
-import io.reactivex.disposables.CompositeDisposable;
+import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -42,38 +39,21 @@ public class MainActivity extends DaggerAppCompatActivity implements
     @Inject
     MainViewModelFactory viewModelFactory;
 
-    @Inject
-    Router router;
-
-
     private MainViewModel viewModel;
 
     private ActivityMainBinding mBinding;
 
-
-    private ActionBarDrawerToggle mToggle;
-    private MyPagerAdapter myPagerAdapter;
-
     private ProgressDialog mProgressDialog;
-
-    private CompositeDisposable disposables = new CompositeDisposable();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         //Assign view model and bind to it
-        viewModel = createViewModel();
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel.class);
 
-        //Redirect User To Sign Up if not auth
-        viewModel.getAuthObservable().observe(this, auth -> {
-            if (auth != null && auth.getCurrentUser() == null) {
-                router.showAuthScreen(this);
-            }
-        });
         //Setup toolbar
         mBinding.mainAcToolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(mBinding.mainAcToolbar);
@@ -84,68 +64,59 @@ public class MainActivity extends DaggerAppCompatActivity implements
         //Set up pager
         setUpPager();
 
+        //Observe Data
+        viewModel.getAuthResponse().observe(this, this::parseAuthResponse);
+        viewModel.getQrResponse().observe(this, this::parseQrResponse);
+        mBinding.mainAcScanFab.setOnClickListener(view -> viewModel.loadPlace());
+        viewModel.observeAuthStatus();
 
-        mBinding.mainAcScanFab.setOnClickListener(view -> {
-            disposables.add(
-                    viewModel.initiateScan().subscribe());
+    }
+
+    private void parseQrResponse(Response<CheckInRequest> qrResponse) {
+        switch (qrResponse.getStatus()) {
+            case LOADING:
+                // showProgressDialog(getString(R.string.place_messages_place_loading));
+                break;
+            case SUCCESS:
+                mProgressDialog.dismiss();
+                Intent intent = new Intent(getApplicationContext(), ProductsActivity.class);
+                intent.putExtra(Constants.CHECKED_IN_STORE_ID, qrResponse.getData().getPlaceId());
+                intent.putExtra(Constants.CHECKED_IN_TABLE_NUMBER, qrResponse.getData().getPlaceId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+            case ERROR:
+                mProgressDialog.dismiss();
+                showSnackbar(getString(R.string.place_messages_place_loading_error));
+                break;
         }
-        );
-
     }
 
+    private void parseAuthResponse(Response<AuthResponse> authStatusResponse) {
+        switch (authStatusResponse.getStatus()) {
+            case LOADING:
+                showProgressDialog(getString(R.string.auth_messages_loading));
+                break;
+            case SUCCESS:
+                mProgressDialog.dismiss();
+                break;
+            case ERROR:
+                mProgressDialog.dismiss();
+                showSnackbar(getString(R.string.auth_messages_not_authorized));
+                viewModel.signInUser();
+                break;
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Constants.RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-            disposables.add(viewModel.parseSignResult(resultCode, response)
-                    .doOnError((e) -> {
-                        showSnackbar(e.getMessage());
-                        mProgressDialog.dismiss();
-                    })
-                    .doOnComplete(() -> mProgressDialog.dismiss())
-                    .subscribe());
-            return;
         }
-
-        //Qr Code Scanning
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        disposables.add(
-
-                viewModel.parseQrResult(result)
-                        .doOnSubscribe((subs)-> showProgressDialog())
-                        .subscribe((success) -> {
-                                    mProgressDialog.dismiss();
-                                },
-                                (error) -> {
-                                    showSnackbar(error.getMessage());
-                                    mProgressDialog.dismiss();
-                                })
-        );
-
-
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        disposables.dispose();
-    }
 
     /*
-    Helper Methods
-    * */
-
-    private MainViewModel createViewModel() {
-        return ViewModelProviders
-                .of(this, viewModelFactory)
-                .get(MainViewModel.class);
-    }
+    **********View Helpers***************
+    */
 
     private void setUpNavigationDrawer() {
         mBinding.mainAcNavView.setNavigationItemSelectedListener(this);
-        mToggle = new ActionBarDrawerToggle(this,
+        ActionBarDrawerToggle mToggle = new ActionBarDrawerToggle(this,
                 mBinding.mainAcDrawerLayout,
                 mBinding.mainAcToolbar,
                 R.string.drawer_open,
@@ -155,7 +126,7 @@ public class MainActivity extends DaggerAppCompatActivity implements
     }
 
     private void setUpPager() {
-        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mBinding.mainAcPager.setAdapter(myPagerAdapter);
         mBinding.mainAcPager.setPageTransformer(true, new DepthPageTransformer());
         mBinding.mainAcTabLayout.setupWithViewPager(mBinding.mainAcPager);
@@ -224,31 +195,17 @@ public class MainActivity extends DaggerAppCompatActivity implements
     }
 
 
-    private void showSnackbar(int resourceId) {
-        Snackbar.make(mBinding.mainAcCoordinatorLayout, getString(resourceId), Snackbar.LENGTH_SHORT)
-                .show();
-    }
-
     private void showSnackbar(String message) {
         Snackbar.make(mBinding.mainAcCoordinatorLayout, message, Snackbar.LENGTH_SHORT)
                 .show();
     }
 
 
-    private void showProgressDialog(int messageResource) {
-        mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setMessage(getString(messageResource));
-        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        mProgressDialog.setIndeterminate(true);
-        mProgressDialog.show();
-
-    }
-
-    private void showProgressDialog() {
+    private void showProgressDialog(String message) {
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setIndeterminate(true);
-        mProgressDialog.setMessage("Getting Products");
+        mProgressDialog.setMessage(message);
         mProgressDialog.show();
     }
 

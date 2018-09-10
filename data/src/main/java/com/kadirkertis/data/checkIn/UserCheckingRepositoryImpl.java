@@ -4,7 +4,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.kadirkertis.data.model.DataCheckInPlace;
 import com.kadirkertis.data.model.DataCheckInUser;
-import com.kadirkertis.domain.repository.UserCheckingRepository;
+import com.kadirkertis.domain.interactor.checkIn.model.CheckInRequest;
+import com.kadirkertis.domain.interactor.checkIn.repository.UserCheckingRepository;
 import com.kadirkertis.domain.utils.Constants;
 
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import durdinapps.rxfirebase2.RxFirebaseDatabase;
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -20,28 +22,34 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserCheckingRepositoryImpl implements UserCheckingRepository {
 
-    private FirebaseDatabase db;
+    private final FirebaseDatabase db;
 
     public UserCheckingRepositoryImpl(FirebaseDatabase db) {
         this.db = db;
     }
 
     @Override
-    public Completable checkUserIn(String placeId, String tableNumber, String userId) {
+    public Single<String> checkUserIn(CheckInRequest request) {
         HashMap<String, Object> timeAdded = new HashMap<>();
         timeAdded.put(Constants.PROPERTY_TIME_ADDED, ServerValue.TIMESTAMP);
 
         Map<String, Object> checkIns = new HashMap<>();
 
-        Map<String, Object> userCheckIn = new DataCheckInUser(placeId, timeAdded).toMap();
-        Map<String, Object> placeCheckIn = new DataCheckInPlace(userId, timeAdded).toMap();
-        Map<String, Object> placeCuurentlyIn = new DataCheckInPlace(userId, timeAdded).toMap();
+        Map<String, Object> userCheckIn = new DataCheckInUser(request.getPlaceId(), timeAdded).toMap();
+        Map<String, Object> placeCheckIn = new DataCheckInPlace(request.getUid(), timeAdded).toMap();
+        Map<String, Object> placeCuurentlyIn = new DataCheckInPlace(request.getUid(), timeAdded).toMap();
 
-        String checkInId = getCheckInId(placeId);
+        String checkInId = getCheckInId(request.getPlaceId());
 
-        String placeReference = "/" + Constants.DB_PLACES + "/" + placeId + "/" + Constants.TABLE_PLACE_CHECKED_INS + "/" + checkInId;
-        String currentlyInReference = "/" + Constants.DB_PLACES + "/" + placeId + "/" + Constants.TABLE_PLACE_CURRENT_CHECKED_INS + "/" + checkInId;
-        String userReference = "/" + Constants.DB_USERS + "/" + userId + "/" + Constants.TABLE_USER_CHECKED_IN_PLACES + "/" + checkInId;
+        String placeReference = "/" + Constants.DB_PLACES + "/" + request.getPlaceId()
+                + "/" + Constants.TABLE_PLACE_CHECKED_INS
+                + "/" + checkInId;
+        String currentlyInReference = "/" + Constants.DB_PLACES + "/"
+                + request.getPlaceId() + "/"
+                + Constants.TABLE_PLACE_CURRENT_CHECKED_INS + "/" + checkInId;
+        String userReference = "/" + Constants.DB_USERS + "/"
+                + request.getUid() + "/" + Constants.TABLE_USER_CHECKED_IN_PLACES + "/" + checkInId;
+
         checkIns.put(placeReference,
                 placeCheckIn);
         checkIns.put(currentlyInReference,
@@ -50,7 +58,8 @@ public class UserCheckingRepositoryImpl implements UserCheckingRepository {
                 userCheckIn);
 
         return RxFirebaseDatabase.updateChildren(db.getReference(), checkIns)
-                .observeOn(Schedulers.io());
+                .andThen(Single.just(request.getPlaceId()))
+                .subscribeOn(Schedulers.io());
     }
 
     @Override

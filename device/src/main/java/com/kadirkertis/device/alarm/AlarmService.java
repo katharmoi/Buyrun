@@ -12,7 +12,7 @@ import android.os.SystemClock;
 
 public class AlarmService {
 
-    private Context context;
+    private final Context context;
 
     public AlarmService(Context context){
         this.context = context;

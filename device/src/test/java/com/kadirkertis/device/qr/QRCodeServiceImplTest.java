@@ -3,9 +3,9 @@ package com.kadirkertis.device.qr;
 import android.app.Activity;
 
 import com.google.zxing.integration.android.IntentResult;
-import com.kadirkertis.domain.model.QrResult;
-import com.kadirkertis.domain.services.qr.ScanCancelledException;
-import com.kadirkertis.domain.services.qr.UnknownQRCodeException;
+import com.kadirkertis.domain.interactor.qr.model.QrResult;
+import com.kadirkertis.domain.interactor.qr.exceptions.ScanCancelledException;
+import com.kadirkertis.domain.interactor.qr.exceptions.UnknownQRCodeException;
 import com.kadirkertis.domain.utils.Constants;
 
 import org.junit.Rule;

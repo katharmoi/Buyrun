@@ -1,6 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.kadirkertis.orfo.ui.main.PlacesFragment">
+    tools:context="com.kadirkertis.orfo.ui.main.fragments.places.PlacesFragment">
 
     <FrameLayout
         android:layout_width="match_parent"

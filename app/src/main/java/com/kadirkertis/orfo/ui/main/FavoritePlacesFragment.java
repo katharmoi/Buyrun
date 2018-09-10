@@ -25,7 +25,7 @@ import com.kadirkertis.orfo.ui.placeprofile.PlaceProfileFragment;
 import com.kadirkertis.domain.utils.Constants;
 import com.kadirkertis.orfo.utils.GridItemDecoration;
 import com.kadirkertis.orfo.utils.Utility;
-import com.kadirkertis.orfo.customViews.EmptyRecyclerView;
+import com.kadirkertis.orfo.utils.EmptyRecyclerView;
 
 public class FavoritePlacesFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
 FavoritePlacesAdapter.OnPlaceClickedListener{
@@ -45,10 +45,10 @@ FavoritePlacesAdapter.OnPlaceClickedListener{
         // Inflate the layout for this fragment
 
         View root = inflater.inflate(R.layout.fragment_favorite_places, container, false);
-        TextView emptyView = (TextView) root.findViewById(R.id.emptyView);
+        TextView emptyView = root.findViewById(R.id.emptyView);
         mAdapter = new FavoritePlacesAdapter(getActivity(),null,this);
         mTwoPane = getActivity().findViewById(R.id.mainAcDetailsContainer) != null;
-        EmptyRecyclerView recyclerView = (EmptyRecyclerView) root.findViewById(R.id.fav_places_recycler_view);
+        EmptyRecyclerView recyclerView = root.findViewById(R.id.fav_places_recycler_view);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setEmptyView(emptyView);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), Utility.getColumCount(getActivity(),mTwoPane));

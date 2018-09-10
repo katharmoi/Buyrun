@@ -78,7 +78,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.kadirkertis.orfo.customViews.EmptyRecyclerView
+                <com.kadirkertis.orfo.utils.EmptyRecyclerView
                     android:id="@+id/messagesRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

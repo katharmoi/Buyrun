@@ -21,7 +21,7 @@ public class MessageAdapter extends GenericAdapter<Message, MessageAdapter.ViewH
 
     private static final int VIEW_USER = 0;
     private static final int VIEW_OTHERS = 1;
-    private String muserId;
+    private final String muserId;
 
     public MessageAdapter(List<Message> data, Context context, int resourceId, String userId) {
         super(data, context, resourceId);
@@ -54,16 +54,16 @@ public class MessageAdapter extends GenericAdapter<Message, MessageAdapter.ViewH
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView message;
-        private TextView name;
-        private TextView date;
+        private final TextView message;
+        private final TextView name;
+        private final TextView date;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            message = (TextView) itemView.findViewById(R.id.messageTextView);
-            name = (TextView) itemView.findViewById(R.id.nameTextView);
-            date = (TextView) itemView.findViewById(R.id.dateTextView);
+            message = itemView.findViewById(R.id.messageTextView);
+            name = itemView.findViewById(R.id.nameTextView);
+            date = itemView.findViewById(R.id.dateTextView);
         }
     }
 

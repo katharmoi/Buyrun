@@ -20,9 +20,9 @@ import com.squareup.picasso.Picasso;
 
 public class FavoritePlacesAdapter extends RecyclerView.Adapter<FavoritePlacesAdapter.ViewHolder> {
 
-    private Context mContext;
+    private final Context mContext;
     private Cursor mCursor;
-    private OnPlaceClickedListener mListener;
+    private final OnPlaceClickedListener mListener;
     private int mSelectedPosition = -1;
 
     public FavoritePlacesAdapter(Context context, Cursor cursor, OnPlaceClickedListener listener) {
@@ -47,7 +47,7 @@ public class FavoritePlacesAdapter extends RecyclerView.Adapter<FavoritePlacesAd
 
             holder.placeType.setText(mCursor.getString(
                     mCursor.getColumnIndex(OrfoDbContract.OrfoFavoritePlacesTable.COLUMN_PLACE_TYPE)));
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(mCursor.getString(
                             mCursor.getColumnIndex(OrfoDbContract.OrfoFavoritePlacesTable.COLUMN_PLACE_IMG_URL)
                     ))
@@ -93,19 +93,19 @@ public class FavoritePlacesAdapter extends RecyclerView.Adapter<FavoritePlacesAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView placeImage;
-        private TextView placeName;
-        private TextView placeType;
-        private RatingBar ratingBar;
+        private final ImageView placeImage;
+        private final TextView placeName;
+        private final TextView placeType;
+        private final RatingBar ratingBar;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            placeImage = (ImageView) itemView.findViewById(R.id.list_item_place_img);
-            placeName = (TextView) itemView.findViewById(R.id.list_item_place_name);
-            placeType = (TextView) itemView.findViewById(R.id.list_item_place_type);
-            ratingBar = (RatingBar) itemView.findViewById(R.id.list_item_place_rating_bar);
+            placeImage = itemView.findViewById(R.id.list_item_place_img);
+            placeName = itemView.findViewById(R.id.list_item_place_name);
+            placeType = itemView.findViewById(R.id.list_item_place_type);
+            ratingBar = itemView.findViewById(R.id.list_item_place_rating_bar);
         }
     }
 

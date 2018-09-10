@@ -15,8 +15,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.kadirkertis.domain.interactor.place.model.Place;
 import com.kadirkertis.orfo.R;
-import com.kadirkertis.orfo.model.Place;
 import com.kadirkertis.domain.utils.Constants;
 import com.squareup.picasso.Picasso;
 
@@ -41,9 +41,9 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
         private DatabaseReference mPlaceListReference;
         private ChildEventListener mPlacesChildEventListener;
 
-        private Context mContext;
-        private List<Place> mPlaces;
-        private int mAppWidgetId;
+        private final Context mContext;
+        private final List<Place> mPlaces;
+        private final int mAppWidgetId;
 
         public OrfoRemoteViewsFactory(Context context,Intent intent){
             mContext = context;
@@ -84,7 +84,7 @@ public class OrfoRemoteViewsWidgetService extends RemoteViewsService {
            final RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.list_item_widget);
             Place info = mPlaces.get(i);
             try {
-                Bitmap b = Picasso.with(mContext)
+                Bitmap b = Picasso.get()
                         .load(info.getImageUrl())
                         .get();
                 if(b!= null){

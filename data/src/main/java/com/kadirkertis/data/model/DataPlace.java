@@ -21,22 +21,24 @@ public class DataPlace {
     private String imageUrl;
     private double latitude;
     private double longitude;
-    private HashMap<String,Object> timeAdded;
-    private HashMap<String,Object> timeLastEdited;
-
-
+    private HashMap<String, Object> timeAdded;
+    private HashMap<String, Object> timeLastEdited;
+    private float rating;
+    private int rateCount;
 
     public DataPlace(String id,
-                 String placeName,
-                 String ownerName,
-                 String email,
-                 String address,
-                 String phone,
-                 String placeType,
-                 String imageUrl,
-                 double latitude,
-                 double longitude,
-                 HashMap<String, Object> timeAdded) {
+                     String placeName,
+                     String ownerName,
+                     String email,
+                     String address,
+                     String phone,
+                     String placeType,
+                     String imageUrl,
+                     double latitude,
+                     double longitude,
+                     float rating,
+                     int rateCount,
+                     HashMap<String, Object> timeAdded) {
         this.id = id;
         this.placeName = placeName;
         this.ownerName = ownerName;
@@ -48,12 +50,14 @@ public class DataPlace {
         this.timeAdded = timeAdded;
         this.latitude = latitude;
         this.longitude = longitude;
-        HashMap<String,Object> timeLastEditedObj = new HashMap<>();
+        this.rateCount = rateCount;
+        this.rating = rating;
+        HashMap<String, Object> timeLastEditedObj = new HashMap<>();
         timeLastEditedObj.put("date", ServerValue.TIMESTAMP);
         this.timeLastEdited = timeLastEditedObj;
     }
 
-    public DataPlace(){
+    public DataPlace() {
 
     }
 
@@ -98,32 +102,40 @@ public class DataPlace {
         return longitude;
     }
 
+    public float getRating() {
+        return rating;
+    }
+
+    public int getRateCount() {
+        return rateCount;
+    }
+
     public HashMap<String, Object> getTimeAdded() {
-        if(timeAdded != null){
+        if (timeAdded != null) {
             return timeAdded;
         }
 
-        HashMap<String,Object> timeAddedObj = new HashMap<>();
+        HashMap<String, Object> timeAddedObj = new HashMap<>();
         timeAddedObj.put("date", ServerValue.TIMESTAMP);
         return timeAddedObj;
     }
 
-    public HashMap<String,Object> getTimeLastEdited(){
+    public HashMap<String, Object> getTimeLastEdited() {
         return timeLastEdited;
     }
 
     @Exclude
-    public long getTimeAddedLong(){
-        return (long)timeAdded.get("timeAdded");
+    public long getTimeAddedLong() {
+        return (long) timeAdded.get("timeAdded");
     }
 
     @Exclude
-    public long getTimeLastEditedLong(){
+    public long getTimeLastEditedLong() {
         return (long) timeLastEdited.get("date");
     }
 
     @Exclude
-    public Map<String,Object> toMap(){
+    public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("id", id);
         result.put("placeName", placeName);
@@ -134,7 +146,9 @@ public class DataPlace {
         result.put("placeType", placeType);
         result.put("imageUrl", imageUrl);
         result.put("timeAdded", timeAdded);
-        result.put("timeLastEdited",timeLastEdited);
+        result.put("timeLastEdited", timeLastEdited);
+        result.put("rating", rating);
+        result.put("rateCount", rateCount);
 
         return result;
 

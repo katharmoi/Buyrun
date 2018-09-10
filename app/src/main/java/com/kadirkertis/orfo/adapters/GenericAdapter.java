@@ -15,9 +15,9 @@ import java.util.List;
 public abstract class GenericAdapter<T,VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {
 
-    List<T> mData;
-    int mResourceId;
-    Context mContext;
+    final List<T> mData;
+    final int mResourceId;
+    final Context mContext;
 
     public GenericAdapter(List<T> data, Context context, int resourceId){
         mData = data;

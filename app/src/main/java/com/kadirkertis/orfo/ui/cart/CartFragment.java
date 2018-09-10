@@ -30,7 +30,7 @@ import com.kadirkertis.data.database.OrfoDbContract;
 import com.kadirkertis.orfo.model.Order;
 import com.kadirkertis.orfo.model.OrderItem;
 import com.kadirkertis.domain.utils.Constants;
-import com.kadirkertis.orfo.customViews.EmptyRecyclerView;
+import com.kadirkertis.orfo.utils.EmptyRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,12 +68,12 @@ public class CartFragment extends Fragment implements LoaderManager.LoaderCallba
                                           Bundle savedInstanceState) {
         android.view.View root = inflater.inflate(R.layout.fragment_cart, container, false);
         mAdapter = new CartAdapter(getActivity(),null);
-        mTotalAmountText = (TextView) root.findViewById(R.id.cart_general_total_text);
-        mTotalCard = (CardView) root.findViewById(R.id.cart_total_card);
-        mOrderBtn = (Button) root.findViewById(R.id.cart_order_btn);
+        mTotalAmountText = root.findViewById(R.id.cart_general_total_text);
+        mTotalCard = root.findViewById(R.id.cart_total_card);
+        mOrderBtn = root.findViewById(R.id.cart_order_btn);
         mOrderBtn.setOnClickListener(this);
-        TextView emptyView = (TextView) root.findViewById(R.id.emptyView);
-        EmptyRecyclerView cartRecycler = (EmptyRecyclerView) root.findViewById(R.id.cart_recycler);
+        TextView emptyView = root.findViewById(R.id.emptyView);
+        EmptyRecyclerView cartRecycler = root.findViewById(R.id.cart_recycler);
         cartRecycler.setEmptyView(emptyView);
         cartRecycler.setAdapter(mAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
