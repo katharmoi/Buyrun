@@ -26,12 +26,14 @@ Moreover you can see who is at the place and chat with them.
 - Get detailed information about any OrFo place
 
 # Screens
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454654/ebad992a-2ad5-11e7-8b10-00a8b724c793.png)
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454661/f0d85fac-2ad5-11e7-81e4-8666e4c6a397.png)
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454664/f4ec155c-2ad5-11e7-93c7-2f94eb8ba1c2.png)
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454669/f86d6d7a-2ad5-11e7-864f-e304204821ce.png)
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454672/fafe363c-2ad5-11e7-996e-7cccbcc4d5c9.png)
-![alt tag](https://cloud.githubusercontent.com/assets/18499393/25454676/fdc56070-2ad5-11e7-8aaf-6edbd39b464b.png)
+![orfo-login](https://user-images.githubusercontent.com/18499393/45298438-297e1380-b511-11e8-9cd8-39954e69217a.png)
+![orfo_main](https://user-images.githubusercontent.com/18499393/45298439-297e1380-b511-11e8-8a6c-2a069656043a.png)
+![orfo_menu](https://user-images.githubusercontent.com/18499393/45298440-297e1380-b511-11e8-84c1-1c5348c20752.png)
+![orfo_order](https://user-images.githubusercontent.com/18499393/45298441-297e1380-b511-11e8-8607-d64b90a47b35.png)
+![orfo_place](https://user-images.githubusercontent.com/18499393/45298442-2a16aa00-b511-11e8-8c88-185d44f647e3.png)
+![orfo_place_details](https://user-images.githubusercontent.com/18499393/45298443-2a16aa00-b511-11e8-86f0-12aa2319e26f.png)
+![orfo_chat_main](https://user-images.githubusercontent.com/18499393/45298445-2aaf4080-b511-11e8-972f-3893b3c182db.png)
+![orfo_chat_single](https://user-images.githubusercontent.com/18499393/45298447-2aaf4080-b511-11e8-9727-9a3a411329b8.png)
 
 
 # Sample Qr
